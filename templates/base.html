@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{% block title %}SILENT VENOM{% endblock %}</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <a href="javascript:history.back()" class="back-btn"><i class="bi bi-chevron-left"></i></a>
+            <div class="brand-logo">
+                <i class="bi bi-shield-lock-fill"></i>
+                SILENT VENOM
+            </div>
+            <div class="lang-selector">
+                <i class="bi bi-globe"></i> EN
+            </div>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="px-3 pt-2">
+            {% for category, message in messages %}
+              <div class="{% if category == 'danger' %}alert-danger-custom{% else %}alert-custom{% endif %}">
+                {{ message }}
+              </div>
+            {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - SILENT VENOM{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+    <h2>Login</h2>
+    <p>Please enter your login details</p>
+</div>
+
+<div class="form-container">
+    <div class="tab-pill">
+        <i class="bi bi-shield-check"></i> Account Login
+    </div>
+
+    <form action="{{ url_for('login') }}" method="POST">
+        <!-- Phone Field -->
+        <div class="form-group-custom">
+            <label class="form-label-custom">
+                <i class="bi bi-phone"></i> Phone number / Admin User
+            </label>
+            <div class="input-box-custom">
+                <input type="text" name="phone" placeholder="Enter phone number or 'admin'" required>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group-custom">
+            <label class="form-label-custom">
+                <i class="bi bi-lock"></i> Password
+            </label>
+            <div class="input-box-custom">
+                <input type="password" id="login-pass" name="password" placeholder="Enter password" required>
+                <i class="bi bi-eye-slash toggle-password" id="toggle-login-pass" onclick="togglePasswordVisibility('login-pass', 'toggle-login-pass')"></i>
+            </div>
+        </div>
+        <div style="text-align: right; margin-bottom: 15px;">
+            <a href="{{ url_for('forgot_password') }}" style="color: var(--text-gold); font-size: 12px; text-decoration: none;">Forgot Password?</a>
+        </div>
+
+        <div style="height: 20px;"></div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-gold">Login</button>
+    </form>
+
+    <a href="{{ url_for('register') }}" class="btn-outline-custom">
+        Don't have an account? <span>Register</span>
+    </a>
+</div>
+{% endblock %}

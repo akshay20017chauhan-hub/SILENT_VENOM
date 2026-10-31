@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - SILENT VENOM{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+    <h2>Register</h2>
+    <p>Please register by phone number or email</p>
+</div>
+
+<div class="form-container">
+    <div class="tab-pill">
+        <i class="bi bi-phone"></i> Register your phone
+    </div>
+
+    <form action="{{ url_for('register') }}" method="POST">
+        <!-- Phone Field -->
+        <div class="form-group-custom">
+            <label class="form-label-custom">
+                <i class="bi bi-phone"></i> Phone number
+            </label>
+            <div class="input-box-custom">
+                <select name="country_code">
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                </select>
+                <i class="bi bi-chevron-down text-muted me-2" style="font-size: 10px;"></i>
+                <input type="text" name="phone" placeholder="Please enter the phone number" required>
+            </div>
+        </div>
+
+        <!-- Set Password -->
+        <div class="form-group-custom">
+            <label class="form-label-custom">
+                <i class="bi bi-lock"></i> Set password
+            </label>
+            <div class="input-box-custom">
+                <input type="password" id="reg-pass" name="password" placeholder="Set password" required>
+                <i class="bi bi-eye-slash toggle-password" id="toggle-reg-pass" onclick="togglePasswordVisibility('reg-pass', 'toggle-reg-pass')"></i>
+            </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group-custom">
+            <label class="form-label-custom">
+                <i class="bi bi-lock"></i> Confirm password
+            </label>
+            <div class="input-box-custom">
+                <input type="password" id="reg-confirm-pass" name="confirm_password" placeholder="Confirm password" required>
+                <i class="bi bi-eye-slash toggle-password" id="toggle-confirm-pass" onclick="togglePasswordVisibility('reg-confirm-pass', 'toggle-confirm-pass')"></i>
+            </div>
+        </div>
+
+        <!-- Invite Code -->
+        <div class="form-group-custom">
+            <label class="form-label-custom">
+                <i class="bi bi-ticket-perforated"></i> Invite code
+            </label>
+            <div class="input-box-custom">
+                <input type="text" name="invite_code" value="{{ invite_code }}" placeholder="Invite code">
+            </div>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="terms-checkbox">
+            <input type="checkbox" id="terms" checked required>
+            <label for="terms">I have read and agree [<a href="#">Privacy Agreement</a>]</label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-gold">Register</button>
+    </form>
+
+    <a href="{{ url_for('login') }}" class="btn-outline-custom">
+        I have an account <span>Login</span>
+    </a>
+</div>
+{% endblock %}

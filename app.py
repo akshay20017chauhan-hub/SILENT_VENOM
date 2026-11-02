@@ -65,16 +65,16 @@ def register():
         invite_code = request.form.get('invite_code', '').strip()
 
         if not phone or not password:
-            flash('Kripya phone number aur password bharein!', 'danger')
+            flash('Please fill in the phone number and password.', 'danger')
             return redirect(url_for('register'))
 
         if password != confirm_password:
-            flash('Passwords match nahi kar rahe hain!', 'danger')
+            flash('Passwords do not match.', 'danger')
             return redirect(url_for('register'))
 
         existing_user = User.query.filter_by(phone=phone).first()
         if existing_user:
-            flash('Ye phone number pehle se registered hai!', 'danger')
+            flash('This phone number is already registered.', 'danger')
             return redirect(url_for('register'))
 
         new_user = User(
@@ -87,7 +87,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
-        flash('Registration kamyab raha! Ab aap login kar sakte hain.', 'success')
+        flash('Registration successful! You can now log in.', 'success')
         return redirect(url_for('login'))
 
     inv_code = request.args.get('invitationCode', '326592099807')
@@ -101,11 +101,11 @@ def login():
 
         user = User.query.filter_by(phone=phone).first()
         if not user or not user.check_password(password):
-            flash('Galat phone number ya password!', 'danger')
+            flash('Incorrect phone number or password.', 'danger')
             return redirect(url_for('login'))
 
         if user.is_blocked:
-            flash('Aapka account block kar diya gaya hai. Support se sampark karein.', 'danger')
+            flash('Your account has been blocked. Please contact support.', 'danger')
             return redirect(url_for('login'))
 
         login_user(user)
@@ -123,21 +123,21 @@ def forgot_password():
         confirm_password = request.form.get('confirm_password', '').strip()
 
         if not phone or not new_password:
-            flash('Kripya phone number aur naya password bharein!', 'danger')
+            flash('Please fill in the phone number and new password.', 'danger')
             return redirect(url_for('forgot_password'))
 
         if new_password != confirm_password:
-            flash('Passwords match nahi kar rahe hain!', 'danger')
+            flash('Passwords do not match.', 'danger')
             return redirect(url_for('forgot_password'))
 
         user = User.query.filter_by(phone=phone).first()
         if not user:
-            flash('Ye phone number registered nahi hai!', 'danger')
+            flash('This phone number is not registered.', 'danger')
             return redirect(url_for('forgot_password'))
 
         user.set_password(new_password)
         db.session.commit()
-        flash('Password safaltapoorvak reset ho gaya! Ab aap naye password se login kar sakte hain.', 'success')
+        flash('Password reset successfully! You can now log in with the new password.', 'success')
         return redirect(url_for('login'))
 
     return render_template('forgot_password.html')
@@ -147,7 +147,7 @@ def forgot_password():
 def dashboard():
     if current_user.is_blocked:
         logout_user()
-        flash('Aapka account block kar diya gaya hai.', 'danger')
+        flash('Your account has been blocked.', 'danger')
         return redirect(url_for('login'))
     return render_template('dashboard.html')
 
@@ -155,7 +155,7 @@ def dashboard():
 @login_required
 def admin_dashboard():
     if not current_user.is_admin:
-        flash('Keval Admin is page ko access kar sakta hai!', 'danger')
+        flash('Only Admin can access this page.', 'danger')
         return redirect(url_for('dashboard'))
     
     users = User.query.all()
@@ -169,7 +169,7 @@ def toggle_block(user_id):
     
     user = User.query.get_or_404(user_id)
     if user.is_admin:
-        return jsonify({'error': 'Admin user ko block nahi kiya ja sakta'}), 400
+        return jsonify({'error': 'Admin user cannot be blocked.'}), 400
     
     user.is_blocked = not user.is_blocked
     db.session.commit()
@@ -179,7 +179,7 @@ def toggle_block(user_id):
 @login_required
 def logout():
     logout_user()
-    flash('Aap safaltapoorvak logout ho chuke hain.', 'info')
+    flash('You have successfully logged out.', 'info')
     return redirect(url_for('login'))
 
 if __name__ == '__main__':

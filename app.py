@@ -181,6 +181,11 @@ def logout():
     logout_user()
     flash('You have successfully logged out.', 'info')
     return redirect(url_for('login'))
+    
+    @app.route('/deposit')
+@login_required
+def deposit():
+    return render_template('deposit.html')
 
 if __name__ == '__main__':
     init_db()
@@ -188,7 +193,4 @@ if __name__ == '__main__':
 with app.app_context():
     db.create_all()
     
-   @app.route('/deposit')
-@login_required
-def deposit():
-    return render_template('deposit.html')
+  

@@ -5,11 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>{% block title %}SILENT VENOM{% endblock %}</title>
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Modal CSS Styling -->
+    <style>
+    .sv-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.75);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .sv-modal-card {
+      width: 90%;
+      max-width: 380px;
+      background-color: #0b1210;
+      border: 1px solid #1a2a24;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.8);
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .sv-modal-header {
+      background: linear-gradient(180deg, #fce094 0%, #d4af37 100%);
+      color: #111;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .sv-modal-body {
+      padding: 16px 14px;
+      color: #d1d5db;
+    }
+
+    .sv-notice-title {
+      color: #e5c158;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .sv-notice-text {
+      font-size: 11px;
+      line-height: 1.5;
+      color: #a3b8b0;
+      margin-bottom: 15px;
+    }
+
+    .sv-channel-box {
+      background-color: #060a09;
+      border: 1px dashed #224235;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .sv-channel-title {
+      color: #e5c158;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .sv-channel-sub {
+      color: #88a096;
+      font-size: 9px;
+      margin: 4px 0;
+    }
+
+    .sv-telegram-btn {
+      display: inline-block;
+      margin-top: 6px;
+      color: #00ff66;
+      font-size: 11px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .sv-modal-footer {
+      padding: 12px 14px 16px 14px;
+    }
+
+    .sv-confirm-btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fce094 0%, #c8a030 100%);
+      color: #111;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .sv-confirm-btn:active {
+      transform: scale(0.98);
+    }
+    </style>
 </head>
 <body>
 
@@ -27,22 +130,22 @@
         </header>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            <div class="px-3 pt-2">
-            {% for category, message in messages %}
-              <div class="{% if category == 'danger' %}alert-danger-custom{% else %}alert-custom{% endif %}">
-                {{ message }}
-              </div>
-            {% endfor %}
-            </div>
-          {% endif %}
+            {% if messages %}
+                <div class="px-3 pt-2">
+                    {% for category, message in messages %}
+                        <div class="{{ 'alert-danger-custom' if category == 'danger' else 'alert-custom' }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% endwith %}
 
         {% block content %}{% endblock %}
     </div>
 
     <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>

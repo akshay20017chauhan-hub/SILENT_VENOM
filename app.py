@@ -188,7 +188,7 @@ if __name__ == '__main__':
 with app.app_context():
     db.create_all()
     
-    @app.route('/deposit')
+   @app.route('/deposit')
 @login_required
 def deposit():
     return render_template('deposit.html')

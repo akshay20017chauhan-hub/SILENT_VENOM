@@ -1,1 +1,96 @@
+{% extends 'base.html' %}
 
+{% block title %}Deposit - SILENT VENOM{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width: 450px;">
+    <!-- Top Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="{{ url_for('dashboard') }}" class="text-warning text-decoration-none fs-4">❮</a>
+        <h4 class="text-white m-0 fw-bold">Deposit</h4>
+        <a href="#" class="text-warning text-decoration-none small">Deposit history</a>
+    </div>
+
+    <!-- Balance Card -->
+    <div class="card p-3 mb-4 border-0" style="background: linear-gradient(135deg, #0b4d2c, #137943); border-radius: 12px;">
+        <div class="text-white small">Balance</div>
+        <div class="d-flex justify-content-between align-items-center mt-1">
+            <h3 class="text-white fw-bold m-0">₹0.00</h3>
+            <i class="bi bi-arrow-repeat text-white fs-5"></i>
+        </div>
+    </div>
+
+    <!-- Payment Methods Grid -->
+    <div class="row g-2 mb-4">
+        <div class="col-3">
+            <div class="p-2 text-center rounded bg-dark border border-success text-white small" style="cursor: pointer;">
+                <i class="bi bi-qr-code text-warning fs-4 d-block mb-1"></i> UPI-QR
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="p-2 text-center rounded bg-dark border border-secondary text-white small" style="cursor: pointer;">
+                <i class="bi bi-upc-scan text-info fs-4 d-block mb-1"></i> UPI x QR
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="p-2 text-center rounded bg-dark border border-secondary text-white small" style="cursor: pointer;">
+                <i class="bi bi-wallet2 text-success fs-4 d-block mb-1"></i> E-Wallet
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="p-2 text-center rounded bg-dark border border-secondary text-white small" style="cursor: pointer;">
+                <i class="bi bi-phone text-primary fs-4 d-block mb-1"></i> Paytm x QR
+            </div>
+        </div>
+        <div class="col-3 mt-2">
+            <div class="p-2 text-center rounded bg-dark border border-secondary text-white small" style="cursor: pointer;">
+                <i class="bi bi-currency-exchange text-warning fs-4 d-block mb-1"></i> USDT-TRC20
+            </div>
+        </div>
+        <div class="col-3 mt-2">
+            <div class="p-2 text-center rounded bg-dark border border-secondary text-white small" style="cursor: pointer;">
+                <i class="bi bi-triangle text-warning fs-4 d-block mb-1"></i> ARPay
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Amount Section -->
+    <div class="card p-3 border-0 mb-4" style="background-color: #0b2217; border-radius: 12px;">
+        <h6 class="text-warning mb-3">💰 Deposit amount</h6>
+        <div class="row g-2">
+            <div class="col-4"><button class="btn btn-dark w-100 border border-secondary text-white py-2" onclick="setAmount(100)">₹ 100</button></div>
+            <div class="col-4"><button class="btn btn-dark w-100 border border-secondary text-white py-2" onclick="setAmount(500)">₹ 500</button></div>
+            <div class="col-4"><button class="btn btn-dark w-100 border border-secondary text-white py-2" onclick="setAmount(1000)">₹ 1K</button></div>
+            <div class="col-4"><button class="btn btn-dark w-100 border border-secondary text-white py-2" onclick="setAmount(2000)">₹ 2K</button></div>
+            <div class="col-4"><button class="btn btn-dark w-100 border border-secondary text-white py-2" onclick="setAmount(3000)">₹ 3K</button></div>
+            <div class="col-4"><button class="btn btn-dark w-100 border border-secondary text-white py-2" onclick="setAmount(5000)">₹ 5K</button></div>
+            <div class="col-4"><button class="btn btn-dark w-100 border border-secondary text-white py-2" onclick="setAmount(10000)">₹ 10K</button></div>
+        </div>
+
+        <!-- Custom Amount Input -->
+        <div class="mt-3 position-relative">
+            <span class="position-absolute top-50 start-0 translate-middle-y ms-3 text-warning fw-bold">₹</span>
+            <input type="number" id="depositInput" class="form-control bg-dark text-white ps-5 border-secondary" placeholder="100.00 - 50,000.00">
+        </div>
+    </div>
+
+    <!-- Recharge Instructions -->
+    <div class="card p-3 border-0 mb-4 text-muted small" style="background-color: #0b2217; border-radius: 12px;">
+        <div class="text-warning fw-bold mb-2">📖 Recharge instructions</div>
+        <p class="mb-1">♦ If the transfer time is up, please fill out the deposit form again.</p>
+        <p class="mb-0">♦ The transfer amount must match the order you created.</p>
+    </div>
+
+    <!-- Bottom Deposit Button -->
+    <div class="d-flex justify-content-between align-items-center bg-dark p-3 rounded fixed-bottom mx-auto" style="max-width: 450px;">
+        <div class="small text-white">Recharge Method:<br><span class="text-warning fw-bold">UPI-QR</span></div>
+        <button class="btn btn-success px-4 fw-bold" onclick="alert('Redirecting to payment gateway...')">Deposit</button>
+    </div>
+</div>
+
+<script>
+    function setAmount(val) {
+        document.getElementById('depositInput').value = val;
+    }
+</script>
+{% endblock %}

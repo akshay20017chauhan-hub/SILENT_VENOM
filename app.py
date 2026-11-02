@@ -13,7 +13,6 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
-
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     phone = db.Column(db.String(20), unique=True, nullable=False)
@@ -35,14 +34,14 @@ def load_user(user_id):
 def init_db():
     with app.app_context():
         db.create_all()
-        # Default admin as 'admin'
+        # default admin as 'admin'
         admin = User.query.filter_by(phone='admin').first()
         if not admin:
             admin = User(
                 phone='admin',
                 is_admin=True,
                 is_blocked=False,
-                invite_code='000000'
+                invite_code='ADMIN001'
             )
             admin.set_password('admin123')
             db.session.add(admin)
@@ -54,7 +53,7 @@ def index():
         if current_user.is_admin:
             return redirect(url_for('admin_dashboard'))
         return redirect(url_for('dashboard'))
-    return redirect(url_for('register'))
+    return redirect(url_for('login'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -90,7 +89,7 @@ def register():
         flash('Registration successful! You can now log in.', 'success')
         return redirect(url_for('login'))
 
-    inv_code = request.args.get('invitationCode', '326592099807')
+    inv_code = request.args.get('invitationCode', '326503098027')
     return render_template('register.html', invite_code=inv_code)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -157,7 +156,6 @@ def admin_dashboard():
     if not current_user.is_admin:
         flash('Only Admin can access this page.', 'danger')
         return redirect(url_for('dashboard'))
-    
     users = User.query.all()
     return render_template('admin.html', users=users)
 
@@ -166,11 +164,11 @@ def admin_dashboard():
 def toggle_block(user_id):
     if not current_user.is_admin:
         return jsonify({'error': 'Unauthorized'}), 403
-    
+
     user = User.query.get_or_404(user_id)
     if user.is_admin:
         return jsonify({'error': 'Admin user cannot be blocked.'}), 400
-    
+
     user.is_blocked = not user.is_blocked
     db.session.commit()
     return jsonify({'success': True, 'is_blocked': user.is_blocked})
@@ -181,8 +179,8 @@ def logout():
     logout_user()
     flash('You have successfully logged out.', 'info')
     return redirect(url_for('login'))
-    
-    @app.route('/deposit')
+
+@app.route('/deposit')
 @login_required
 def deposit():
     return render_template('deposit.html')
@@ -190,7 +188,3 @@ def deposit():
 if __name__ == '__main__':
     init_db()
     app.run(debug=True, port=5000)
-with app.app_context():
-    db.create_all()
-    
-  

@@ -47,6 +47,9 @@ def init_db():
             db.session.add(admin)
             db.session.commit()
 
+# Initialize database on startup so Gunicorn creates tables
+init_db()
+
 @app.route('/')
 def index():
     if current_user.is_authenticated:
@@ -186,5 +189,4 @@ def deposit():
     return render_template('deposit.html')
 
 if __name__ == '__main__':
-    init_db()
     app.run(debug=True, port=5000)

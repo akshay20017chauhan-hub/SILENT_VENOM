@@ -11,15 +11,18 @@
         <a href="#" class="text-decoration-none" style="color: #ffc107; font-size: 14px;">Deposit history</a>
     </div>
 
-    <!-- Balance Card -->
-    <div class="card p-4 mb-4 shadow" style="background: linear-gradient(135deg, #0d5c3a, #198754); border: none; border-radius: 12px; color: white;">
-        <div class="d-flex align-items-center mb-2">
-            <span class="me-2">💰</span>
-            <span style="font-size: 14px;">Balance</span>
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
-            <h3 class="fw-bold mb-0">₹0.00</h3>
-            <button class="btn btn-sm btn-link text-white p-0" style="font-size: 20px;">🔄</button>
+    <!-- Balance Card with Left Light & Right Dark Gradient Overlay over balance-bg.png -->
+    <div class="card p-4 mb-4 shadow position-relative overflow-hidden" style="border: none; border-radius: 12px; color: white; background-color: #0d5c3a;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(13, 92, 58, 0.45) 0%, rgba(13, 92, 58, 0.88) 75%), url('{{ url_for(\'static\', filename=\'balance-bg.png\') }}') center/cover no-repeat; z-index: 1;"></div>
+        <div style="position: relative; z-index: 2;">
+            <div class="d-flex align-items-center mb-2">
+                <span class="me-2">💰</span>
+                <span style="font-size: 14px;">Balance</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="fw-bold mb-0">₹0.00</h3>
+                <button class="btn btn-sm btn-link text-white p-0" style="font-size: 20px;">🔄</button>
+            </div>
         </div>
     </div>
 
@@ -113,14 +116,14 @@
             <h5 class="mb-0 fw-bold" style="color: #ffc107;">AR Wallet</h5>
         </div>
         <div class="text-white" style="font-size: 13px; line-height: 1.6;">
-            <p class="mb-3 text-white">AR Wallet is a third-party payment service platform that facilitates fast payments on the platform using ARB (digital currency)[cite: 30]</p>
-            <p class="mb-3 fw-bold text-white">Safe, stable and fast[cite: 30]</p>
+            <p class="mb-3 text-white">AR Wallet is a third-party payment service platform that facilitates fast payments on the platform using ARB (digital currency)</p>
+            <p class="mb-3 fw-bold text-white">Safe, stable and fast</p>
             <p class="mb-3" style="color: #ffc107; cursor: pointer;" onclick="openActivationGuide()">How to activate AR Wallet ></p>
             <h6 class="fw-bold mb-2" style="color: #ffc107;">AR wallet features</h6>
-            <p class="mb-2 text-white">You only need dmfirst to withdraw the balance to AR Wallet[cite: 28]</p>
-            <p class="mb-2 text-white">When you want to play games, you can quickly recharge to the dmfirst platform through AR Pay, with the recharge process taking only 5 seconds to complete[cite: 28]</p>
-            <p class="mb-2 text-white">When you need to withdraw money to your bank card, you can quickly sell ARB through UPI in your AR wallet to get rupees, and you can also get additional rewards![cite: 28]</p>
-            <p class="mb-3 text-white">This method reduces your bank transaction issues while you are playing, so you don't need to worry about bank limits. You just need to sell to UPI when you need to use the funds.[cite: 28]</p>
+            <p class="mb-2 text-white">You only need dmfirst to withdraw the balance to AR Wallet</p>
+            <p class="mb-2 text-white">When you want to play games, you can quickly recharge to the dmfirst platform through AR Pay, with the recharge process taking only 5 seconds to complete</p>
+            <p class="mb-2 text-white">When you need to withdraw money to your bank card, you can quickly sell ARB through UPI in your AR wallet to get rupees, and you can also get additional rewards!</p>
+            <p class="mb-3 text-white">This method reduces your bank transaction issues while you are playing, so you don't need to worry about bank limits. You just need to sell to UPI when you need to use the funds.</p>
             <button onclick="startARActivationFlow()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">activate AR wallet</button>
         </div>
     </div>
@@ -134,16 +137,16 @@
         
         <div class="text-white" style="font-size: 13px; line-height: 1.6;">
             <p class="mb-3 text-white">
-                <span style="color: #ffc107;">♦</span> If the transfer time is up, please fill out the deposit form again[cite: 23].
+                <span style="color: #ffc107;">♦</span> If the transfer time is up, please fill out the deposit form again.
             </p>
             <p class="mb-3 text-white">
-                <span style="color: #ffc107;">♦</span> The transfer amount must match the order you created, otherwise the money cannot be credited successfully[cite: 23].
+                <span style="color: #ffc107;">♦</span> The transfer amount must match the order you created, otherwise the money cannot be credited successfully.
             </p>
             <p class="mb-3 text-white">
-                <span style="color: #ffc107;">♦</span> If you transfer the wrong amount, our company will not be responsible for the lost amount![cite: 23]
+                <span style="color: #ffc107;">♦</span> If you transfer the wrong amount, our company will not be responsible for the lost amount!
             </p>
             <p class="mb-0 text-white">
-                <span style="color: #ffc107;">♦</span> Note: do not cancel the deposit order after the money has been transferred[cite: 23].
+                <span style="color: #ffc107;">♦</span> Note: do not cancel the deposit order after the money has been transferred.
             </p>
         </div>
     </div>
@@ -168,7 +171,7 @@
         
         <!-- Loading Overlay inside container -->
         <div id="loadingOverlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; background: rgba(255,255,255,0.85); justify-content: center; align-items: center;">
-            <div style="position: absolute; width: 100%; height: 100%; background: url('{{ url_for('static', filename='ScamAlertPoster.png') }}') center/cover no-repeat; opacity: 0.18; filter: blur(4px); z-index: 1;"></div>
+            <div style="position: absolute; width: 100%; height: 100%; background: url('{{ url_for(\'static\', filename=\'ScamAlertPoster.png\') }}') center/cover no-repeat; opacity: 0.18; filter: blur(4px); z-index: 1;"></div>
             <div style="position: relative; z-index: 2; text-align: center; background: #fff; padding: 30px; border-radius: 16px; width: 85%; max-width: 320px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
                 <div class="spinner-border text-warning mb-3" role="status" style="width: 2.5rem; height: 2.5rem;"></div>
                 <h6 class="fw-bold text-dark mb-1">Loading AR Wallet...</h6>
@@ -201,15 +204,15 @@
             </div>
 
             <h5 class="fw-bold text-dark mb-2">AR Wallet</h5>
-            <p class="text-muted small mb-3">AR Wallet is a third-party payment service that uses ARB (digital currency) for a fast payment on the platform. It is Safe, stable and fast[cite: 30]</p>
+            <p class="text-muted small mb-3">AR Wallet is a third-party payment service that uses ARB (digital currency) for a fast payment on the platform. It is Safe, stable and fast</p>
 
             <button onclick="openActivationGuide()" class="btn btn-warning w-100 fw-bold mb-4 py-2 text-dark" style="background-color: #ffc107; border: none; border-radius: 6px;">How to activate AR Wallet</button>
 
             <h6 class="fw-bold text-dark mb-2">Features of AR wallet</h6>
-            <p class="text-muted small mb-3">You only need to withdraw the balance from AR0080 to AR wallet![cite: 30]</p>
-            <p class="text-muted small mb-3">When you want to have fun, you can quickly deposit to the AR0080 platform through AR Pay. It only takes 5 seconds to complete the deposit.[cite: 30]</p>
-            <p class="text-muted small mb-3">When you need to withdraw money to your bank card, you can quickly sell ARB coin in AR Wallet and withdraw in UPI, and you can also get additional rewards![cite: 30]</p>
-            <p class="text-muted small mb-4">This method reduces the transaction amount of your bank account while you are having fun. You don't need to worry about bank limit. You only need to sell your ARB when you want to withdraw in your UPI![cite: 30]</p>
+            <p class="text-muted small mb-3">You only need to withdraw the balance from AR0080 to AR wallet!</p>
+            <p class="text-muted small mb-3">When you want to have fun, you can quickly deposit to the AR0080 platform through AR Pay. It only takes 5 seconds to complete the deposit.</p>
+            <p class="text-muted small mb-3">When you need to withdraw money to your bank card, you can quickly sell ARB coin in AR Wallet and withdraw in UPI, and you can also get additional rewards!</p>
+            <p class="text-muted small mb-4">This method reduces the transaction amount of your bank account while you are having fun. You don't need to worry about bank limit. You only need to sell your ARB when you want to withdraw in your UPI!</p>
 
             <button onclick="goToStepMobile()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Activate AR Wallet</button>
         </div>
@@ -221,7 +224,6 @@
 <script>
     let currentGeneratedOTP = "";
 
-    // Amount Selection Function
     function selectAmount(val, btn) {
         document.getElementById('amountInputBox').value = val;
         let allBtns = document.querySelectorAll('.amt-btn');
@@ -242,7 +244,6 @@
         });
     }
 
-    // Dynamic Tab Switcher
     function switchTab(methodName) {
         const tabs = ['tab-upi', 'tab-upiqr', 'tab-ewallet', 'tab-paytm', 'tab-usdt', 'tab-arpay'];
         tabs.forEach(t => {
@@ -265,7 +266,7 @@
         const amountInputBox = document.getElementById('amountInputBox');
         const amountButtonsGrid = document.getElementById('amountButtonsGrid');
 
-        amountInputBox.value = ""; // Reset box on tab change
+        amountInputBox.value = "";
 
         if(methodName === 'USDT-TRC20') {
             amountTitle.innerText = "Select amount of USDT";
@@ -318,7 +319,6 @@
         }
     }
 
-    // Modal Control & Flow
     function startARActivationFlow() {
         document.getElementById('arWalletModal').style.display = 'flex';
         document.getElementById('loadingOverlay').style.display = 'flex';

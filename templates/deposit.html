@@ -89,20 +89,20 @@
             <h5 id="amountTitle" class="mb-0 fw-bold" style="color: #ffc107;">Deposit amount</h5>
         </div>
         <div class="row g-2 mb-3" id="amountButtonsGrid">
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 100</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 500</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 1K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 2K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 3K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 5K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 10K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 15K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 20K</button></div>
+            <div class="col-4"><button onclick="selectAmount('100', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 100</button></div>
+            <div class="col-4"><button onclick="selectAmount('500', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 500</button></div>
+            <div class="col-4"><button onclick="selectAmount('1000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 1K</button></div>
+            <div class="col-4"><button onclick="selectAmount('2000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 2K</button></div>
+            <div class="col-4"><button onclick="selectAmount('3000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 3K</button></div>
+            <div class="col-4"><button onclick="selectAmount('5000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 5K</button></div>
+            <div class="col-4"><button onclick="selectAmount('10000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 10K</button></div>
+            <div class="col-4"><button onclick="selectAmount('15000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 15K</button></div>
+            <div class="col-4"><button onclick="selectAmount('20000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 20K</button></div>
         </div>
         <div class="input-group mb-2" style="background: #0f241a; border: 1px solid #ffc107; border-radius: 6px;">
             <span id="currencySymbol" class="input-group-text bg-transparent text-warning border-0">₹</span>
-            <input type="text" id="amountInputBox" class="form-control bg-transparent text-white border-0 shadow-none" placeholder="100.00 - 50,000.00">
-            <span class="input-group-text bg-transparent text-muted border-0" style="cursor: pointer;">✕</span>
+            <input type="text" id="amountInputBox" autocomplete="off" value="" class="form-control bg-transparent text-white border-0 shadow-none" placeholder="100.00 - 50,000.00">
+            <span class="input-group-text bg-transparent text-muted border-0" onclick="clearAmount()" style="cursor: pointer;">✕</span>
         </div>
     </div>
 
@@ -162,12 +162,12 @@
 
 <!-- ================= MODALS & OVERLAYS ================= -->
 
-<!-- AR Wallet Simulated Browser Modal Container (Inside which loading & steps happen) -->
+<!-- AR Wallet Simulated Browser Modal Container -->
 <div id="arWalletModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99998; background: rgba(0,0,0,0.8); justify-content: center; align-items: center;">
     <div style="position: relative; background: #ffffff; width: 100%; max-width: 420px; height: 90vh; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; color: #333; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
         
-        <!-- Loading Overlay strictly inside mobile screen container with Venom Poster Background & Blur -->
-        <div id="loadingOverlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; background: rgba(255,255,255,0.75); justify-content: center; align-items: center;">
+        <!-- Loading Overlay inside container -->
+        <div id="loadingOverlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; background: rgba(255,255,255,0.85); justify-content: center; align-items: center;">
             <div style="position: absolute; width: 100%; height: 100%; background: url('{{ url_for('static', filename='ScamAlertPoster.png') }}') center/cover no-repeat; opacity: 0.18; filter: blur(4px); z-index: 1;"></div>
             <div style="position: relative; z-index: 2; text-align: center; background: #fff; padding: 30px; border-radius: 16px; width: 85%; max-width: 320px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
                 <div class="spinner-border text-warning mb-3" role="status" style="width: 2.5rem; height: 2.5rem;"></div>
@@ -188,10 +188,10 @@
             </div>
         </div>
 
-        <!-- Modal Body Content (Dynamic Steps) -->
+        <!-- Modal Body Content -->
         <div id="arWalletBodyContent" style="flex: 1; overflow-y: auto; padding: 20px; background: #fff;">
-            <!-- Initial AR Wallet Home inside Modal -->
-            <div class="card p-3 mb-3 border-0 text-white" style="background: #0f1d16; border-radius: 10px;">
+            <!-- Initial AR Wallet Home -->
+            <div class="card p-3 mb-3 border-0 text-white" style="background: #0f1d16; border-radius: 10px; height: 115px;">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <span class="small text-muted">Wallet balance</span>
                     <span class="badge bg-warning text-dark" style="font-size: 10px;">Not Activated</span>
@@ -217,8 +217,32 @@
     </div>
 </div>
 
-<!-- JavaScript for Interactive Flow & Validation -->
+<!-- JavaScript Logic -->
 <script>
+    let currentGeneratedOTP = "";
+
+    // Amount Selection Function
+    function selectAmount(val, btn) {
+        document.getElementById('amountInputBox').value = val;
+        let allBtns = document.querySelectorAll('.amt-btn');
+        allBtns.forEach(b => {
+            b.style.backgroundColor = 'transparent';
+            b.style.color = '#fff';
+        });
+        btn.style.backgroundColor = '#198754';
+        btn.style.color = '#fff';
+    }
+
+    function clearAmount() {
+        document.getElementById('amountInputBox').value = "";
+        let allBtns = document.querySelectorAll('.amt-btn');
+        allBtns.forEach(b => {
+            b.style.backgroundColor = 'transparent';
+            b.style.color = '#fff';
+        });
+    }
+
+    // Dynamic Tab Switcher
     function switchTab(methodName) {
         const tabs = ['tab-upi', 'tab-upiqr', 'tab-ewallet', 'tab-paytm', 'tab-usdt', 'tab-arpay'];
         tabs.forEach(t => {
@@ -241,6 +265,8 @@
         const amountInputBox = document.getElementById('amountInputBox');
         const amountButtonsGrid = document.getElementById('amountButtonsGrid');
 
+        amountInputBox.value = ""; // Reset box on tab change
+
         if(methodName === 'USDT-TRC20') {
             amountTitle.innerText = "Select amount of USDT";
             currencySymbol.innerText = "₮";
@@ -248,15 +274,15 @@
             arpayExtra.style.display = "none";
             arWalletInfo.style.display = "none";
             amountButtonsGrid.innerHTML = `
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 10</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 50</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 100</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 200</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 500</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 1K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 2K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 3K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 5K</button></div>
+                <div class="col-4"><button onclick="selectAmount('10', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₮ 10</button></div>
+                <div class="col-4"><button onclick="selectAmount('50', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₮ 50</button></div>
+                <div class="col-4"><button onclick="selectAmount('100', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₮ 100</button></div>
+                <div class="col-4"><button onclick="selectAmount('200', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₮ 200</button></div>
+                <div class="col-4"><button onclick="selectAmount('500', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₮ 500</button></div>
+                <div class="col-4"><button onclick="selectAmount('1000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₮ 1K</button></div>
+                <div class="col-4"><button onclick="selectAmount('2000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₮ 2K</button></div>
+                <div class="col-4"><button onclick="selectAmount('3000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₮ 3K</button></div>
+                <div class="col-4"><button onclick="selectAmount('5000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₮ 5K</button></div>
             `;
         } else if(methodName === 'ARPay') {
             arpayExtra.style.display = "block";
@@ -265,12 +291,12 @@
             currencySymbol.innerText = "₹";
             amountInputBox.placeholder = "100.00 - 50,000.00";
             amountButtonsGrid.innerHTML = `
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 100</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 500</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 1K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 2K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 3K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 5K</button></div>
+                <div class="col-4"><button onclick="selectAmount('100', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 100</button></div>
+                <div class="col-4"><button onclick="selectAmount('500', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 500</button></div>
+                <div class="col-4"><button onclick="selectAmount('1000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 1K</button></div>
+                <div class="col-4"><button onclick="selectAmount('2000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 2K</button></div>
+                <div class="col-4"><button onclick="selectAmount('3000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 3K</button></div>
+                <div class="col-4"><button onclick="selectAmount('5000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 5K</button></div>
             `;
         } else {
             arpayExtra.style.display = "none";
@@ -279,20 +305,20 @@
             currencySymbol.innerText = "₹";
             amountInputBox.placeholder = "100.00 - 50,000.00";
             amountButtonsGrid.innerHTML = `
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 100</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 500</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 1K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 2K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 3K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 5K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 10K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 15K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 20K</button></div>
+                <div class="col-4"><button onclick="selectAmount('100', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 100</button></div>
+                <div class="col-4"><button onclick="selectAmount('500', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 500</button></div>
+                <div class="col-4"><button onclick="selectAmount('1000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 1K</button></div>
+                <div class="col-4"><button onclick="selectAmount('2000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 2K</button></div>
+                <div class="col-4"><button onclick="selectAmount('3000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 3K</button></div>
+                <div class="col-4"><button onclick="selectAmount('5000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 5K</button></div>
+                <div class="col-4"><button onclick="selectAmount('10000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 10K</button></div>
+                <div class="col-4"><button onclick="selectAmount('15000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 15K</button></div>
+                <div class="col-4"><button onclick="selectAmount('20000', this)" class="btn btn-outline-success w-100 text-white py-2 amt-btn" style="border-color: #ffc107;">₹ 20K</button></div>
             `;
         }
     }
 
-    // AR Wallet Activation Workflow with inside-container loading overlay
+    // Modal Control & Flow
     function startARActivationFlow() {
         document.getElementById('arWalletModal').style.display = 'flex';
         document.getElementById('loadingOverlay').style.display = 'flex';
@@ -312,17 +338,16 @@
         document.getElementById('arWalletModal').style.display = 'none';
     }
 
-    // Step 1: Mobile Number Verification
     function goToStepMobile() {
         const body = document.getElementById('arWalletBodyContent');
         body.innerHTML = `
             <div class="text-center mb-4">
                 <h5 class="fw-bold text-dark mb-1">Verify your mobile number</h5>
-                <p class="text-muted small">Please enter your mobile phone number to activate AR wallet[cite: 32].<br>Please use your own mobile number to activate[cite: 32].</p>
+                <p class="text-muted small">Please enter your mobile phone number to activate AR wallet.<br>Please use your own mobile number to activate.</p>
             </div>
             <div class="input-group mb-3 border rounded p-2 align-items-center bg-light">
                 <span class="me-2">🇮🇳 +91</span>
-                <input type="number" id="userMobileInput" class="form-control border-0 bg-transparent shadow-none" placeholder="Enter 10 digit mobile number">
+                <input type="number" id="userMobileInput" autocomplete="off" class="form-control border-0 bg-transparent shadow-none" placeholder="Enter 10 digit mobile number">
             </div>
             <div id="mobileError" class="text-danger small mb-2 text-center" style="display:none;">Please enter a valid 10-digit mobile number!</div>
             <button onclick="validateAndProceedMobile()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Continue</button>
@@ -335,38 +360,50 @@
             document.getElementById('mobileError').style.display = 'block';
             return;
         }
-        goToStepOTP();
+        
+        currentGeneratedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+        alert("📲 SMS Simulation:\nYour AR Wallet OTP is: " + currentGeneratedOTP);
+        
+        goToStepOTP(val);
     }
 
-    // Step 2: OTP Verification with Strict Validation (10 mins valid)
-    function goToStepOTP() {
+    function goToStepOTP(mobileNum) {
+        const maskedNum = mobileNum.substring(0, 2) + "****" + mobileNum.substring(8);
         const body = document.getElementById('arWalletBodyContent');
         body.innerHTML = `
             <div class="text-center mb-4">
                 <h5 class="fw-bold text-dark mb-1">enter verification code</h5>
-                <p class="text-muted small">Sending SMS verification code to your mobile phone number</p>
+                <p class="text-muted small">Sending SMS verification code to your mobile phone number<br>+91 ${maskedNum}</p>
             </div>
             <div class="d-flex justify-content-between mb-3">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;" onkeyup="focusNext(this, 1)">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;" onkeyup="focusNext(this, 2)">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;" onkeyup="focusNext(this, 3)">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;" onkeyup="focusNext(this, 4)">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;" onkeyup="focusNext(this, 5)">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;" onkeyup="focusNext(this, 6)">
             </div>
-            <div id="otpError" class="text-danger small mb-2 text-center" style="display:none;">Please enter all 6 digits of the OTP verification code!</div>
+            <div id="otpError" class="text-danger small mb-2 text-center" style="display:none;">Invalid OTP code! Please enter the correct code.</div>
             <p class="text-center text-muted small mb-4">AR Wallet will resend SMS after <span id="timerCount">600</span>s (Valid for 10 mins)</p>
             <button onclick="validateAndProceedOTP()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Verify & Continue</button>
         `;
         startCountdown(600);
     }
 
+    function focusNext(elem, index) {
+        if (elem.value.length === 1) {
+            let next = document.querySelectorAll('.otp-input')[index];
+            if (next) next.focus();
+        }
+    }
+
     function validateAndProceedOTP() {
         const inputs = document.querySelectorAll('.otp-input');
-        let otpVal = "";
-        inputs.forEach(i => otpVal += i.value);
+        let enteredOTP = "";
+        inputs.forEach(i => enteredOTP += i.value);
         
-        if(otpVal.length < 6) {
+        if(enteredOTP !== currentGeneratedOTP) {
+            document.getElementById('otpError').innerText = "Incorrect OTP! Required: " + currentGeneratedOTP;
             document.getElementById('otpError').style.display = 'block';
             return;
         }
@@ -374,38 +411,42 @@
     }
 
     function startCountdown(duration) {
-        let timer = duration, minutes, seconds;
+        let timer = duration;
         const interval = setInterval(function () {
             let elem = document.getElementById('timerCount');
             if(!elem) { clearInterval(interval); return; }
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
             elem.textContent = timer;
             if (--timer < 0) { clearInterval(interval); }
         }, 1000);
     }
 
-    // Step 3: Payment Password Setup
     function goToStepPassword() {
         const body = document.getElementById('arWalletBodyContent');
         body.innerHTML = `
             <div class="text-center mb-4">
                 <h5 class="fw-bold text-dark mb-1">Set up payment password</h5>
-                <p class="text-muted small">For the safety of your property, please set a payment password that you can remember[cite: 33, 35].</p>
+                <p class="text-muted small">For the safety of your property, please set a payment password that you can remember.</p>
             </div>
             <div class="d-flex justify-content-between mb-3">
-                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;">
-                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;">
-                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;">
-                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;">
+                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;" onkeyup="focusNextPass(this, 1)">
+                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;" onkeyup="focusNextPass(this, 2)">
+                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;" onkeyup="focusNextPass(this, 3)">
+                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;" onkeyup="focusNextPass(this, 4)">
             </div>
             <div class="mb-3">
                 <label class="form-label small text-muted">Prompt / password hint</label>
-                <input type="text" id="passHint" class="form-control bg-light" placeholder="Please enter password prompt[cite: 33, 35]">
+                <input type="text" id="passHint" autocomplete="off" class="form-control bg-light" placeholder="Please enter password prompt">
             </div>
             <div id="passError" class="text-danger small mb-2 text-center" style="display:none;">Please enter a 4-digit payment password!</div>
             <button onclick="validateAndProceedPassword()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Confirm activation</button>
         `;
+    }
+
+    function focusNextPass(elem, index) {
+        if (elem.value.length === 1) {
+            let next = document.querySelectorAll('.pass-input')[index];
+            if (next) next.focus();
+        }
     }
 
     function validateAndProceedPassword() {
@@ -420,7 +461,6 @@
         showSuccessModal();
     }
 
-    // Step 4: Success Popup with Green Buttons and White Text
     function showSuccessModal() {
         const body = document.getElementById('arWalletBodyContent');
         body.innerHTML = `
@@ -436,7 +476,6 @@
         `;
     }
 
-    // How to Activate Guide View
     function openActivationGuide() {
         const body = document.getElementById('arWalletBodyContent');
         body.innerHTML = `
@@ -445,13 +484,13 @@
                 <h5 class="mb-0 fw-bold text-dark">How to activate</h5>
             </div>
             <p class="text-dark small fw-bold">1. Click to activate AR Wallet</p>
-            <p class="text-muted small">Please enter your mobile number first and click Continue. You can also activate via email[cite: 31].</p>
+            <p class="text-muted small">Please enter your mobile number first and click Continue. You can also activate via email.</p>
             <p class="text-dark small fw-bold">2. Verify mobile number</p>
-            <p class="text-muted small">Enter the received verification code in the input box (Valid for 10 minutes). If not received, resend after 120 seconds[cite: 31].</p>
+            <p class="text-muted small">Enter the received verification code in the input box (Valid for 10 minutes). If not received, resend after 120 seconds.</p>
             <p class="text-dark small fw-bold">3. Payment password</p>
-            <p class="text-muted small">Please set your payment password and password hint[cite: 32].</p>
+            <p class="text-muted small">Please set your payment password and password hint.</p>
             <p class="text-dark small fw-bold">4. Successfully activated</p>
-            <p class="text-muted small mb-4">After successful activation, you can enter the AR wallet and start using it![cite: 33]</p>
+            <p class="text-muted small mb-4">After successful activation, you can enter the AR wallet and start using it!</p>
             <button onclick="goToStepMobile()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Proceed to Activate</button>
         `;
     }

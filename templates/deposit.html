@@ -25,41 +25,60 @@
 
     <!-- Recharge Methods Grid -->
     <div class="row g-2 mb-4">
-        <div class="col-4">
-            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
-                <div style="font-size: 20px; color: #ffc107;">📱</div>
-                <div class="small fw-bold text-white mt-1">UPI-QR</div>
+        <div class="col-3">
+            <div id="tab-upi" onclick="switchTab('UPI-QR')" class="p-2 text-center rounded border" style="background-color: #12281e; border-color: #ffc107 !important; cursor: pointer; height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-size: 16px; color: #ffc107;">📱</div>
+                <div class="small fw-bold text-white mt-1" style="font-size: 11px;">UPI-QR</div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
-                <div style="font-size: 20px; color: #ffc107;">🔲</div>
-                <div class="small fw-bold text-white mt-1">UPI x QR</div>
+        <div class="col-3">
+            <div id="tab-upiqr" onclick="switchTab('UPI x QR')" class="p-2 text-center rounded border" style="background-color: #12281e; border-color: #2e7d32; cursor: pointer; height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-size: 16px; color: #ffc107;">🔲</div>
+                <div class="small fw-bold text-white mt-1" style="font-size: 11px;">UPI x QR</div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
-                <div style="font-size: 20px; color: #ffc107;">💳</div>
-                <div class="small fw-bold text-white mt-1">E-Wallet</div>
+        <div class="col-3">
+            <div id="tab-ewallet" onclick="switchTab('E-Wallet')" class="p-2 text-center rounded border" style="background-color: #12281e; border-color: #2e7d32; cursor: pointer; height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-size: 16px; color: #ffc107;">💳</div>
+                <div class="small fw-bold text-white mt-1" style="font-size: 11px;">E-Wallet</div>
             </div>
         </div>
-        <div class="col-4 mt-2">
-            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
-                <div style="font-size: 20px; color: #ffc107;">🅿️</div>
-                <div class="small fw-bold text-white mt-1">Paytm x QR</div>
+        <div class="col-3">
+            <div id="tab-paytm" onclick="switchTab('Paytm x QR')" class="p-2 text-center rounded border" style="background-color: #12281e; border-color: #2e7d32; cursor: pointer; height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-size: 16px; color: #ffc107;">🅿️</div>
+                <div class="small fw-bold text-white mt-1" style="font-size: 10px;">Paytm x QR</div>
             </div>
         </div>
-        <div class="col-4 mt-2">
-            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
-                <div style="font-size: 20px; color: #ffc107;">₮</div>
-                <div class="small fw-bold text-white mt-1">USDT-TRC20</div>
+        <div class="col-3 mt-2">
+            <div id="tab-usdt" onclick="switchTab('USDT-TRC20')" class="p-2 text-center rounded border" style="background-color: #12281e; border-color: #2e7d32; cursor: pointer; height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-size: 16px; color: #ffc107;">₮</div>
+                <div class="small fw-bold text-white mt-1" style="font-size: 10px;">USDT-TRC20</div>
             </div>
         </div>
-        <div class="col-4 mt-2">
-            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
-                <div style="font-size: 20px; color: #ffc107;">🅰️</div>
-                <div class="small fw-bold text-white mt-1">ARPay</div>
+        <div class="col-3 mt-2">
+            <div id="tab-arpay" onclick="switchTab('ARPay')" class="p-2 text-center rounded border" style="background-color: #12281e; border-color: #2e7d32; cursor: pointer; height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-size: 16px; color: #ffc107;">🅰️</div>
+                <div class="small fw-bold text-white mt-1" style="font-size: 11px;">ARPay</div>
             </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Section for ARPay Special Views -->
+    <div id="arpayExtraSection" style="display: none;">
+        <div class="card p-3 mb-3 shadow d-flex flex-row justify-content-between align-items-center" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
+            <div class="d-flex align-items-center">
+                <span class="me-2 text-warning">📄</span>
+                <span class="text-white" style="font-size: 14px;">AR Pay transaction rules</span>
+            </div>
+            <span class="text-warning" style="font-size: 14px; cursor: pointer;">Check ></span>
+        </div>
+
+        <div class="card p-3 mb-4 shadow d-flex flex-row justify-content-between align-items-center" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
+            <div class="d-flex align-items-center">
+                <span class="me-2 text-warning fw-bold">⚠️</span>
+                <span class="text-white small">Your AR wallet has not been activated yet</span>
+            </div>
+            <button class="btn btn-warning btn-sm fw-bold px-3 py-1" style="background-color: #f0c040; border: none; font-size: 12px; border-radius: 4px; color: #12281e;">activate AR wallet</button>
         </div>
     </div>
 
@@ -67,25 +86,47 @@
     <div class="card p-3 mb-4 shadow" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
         <div class="d-flex align-items-center mb-3">
             <span class="me-2">💰</span>
-            <h5 class="mb-0 fw-bold" style="color: #ffc107;">Deposit amount</h5>
+            <h5 id="amountTitle" class="mb-0 fw-bold" style="color: #ffc107;">Deposit amount</h5>
         </div>
-        <div class="row g-2 mb-3">
+        <div class="row g-2 mb-3" id="amountButtonsGrid">
             <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 100</button></div>
             <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 500</button></div>
             <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 1K</button></div>
             <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 2K</button></div>
             <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 3K</button></div>
             <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 5K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 10K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 15K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 20K</button></div>
         </div>
         <div class="input-group mb-2" style="background: #0f241a; border: 1px solid #2e7d32; border-radius: 6px;">
-            <span class="input-group-text bg-transparent text-warning border-0">₹</span>
-            <input type="text" class="form-control bg-transparent text-white border-0 shadow-none" placeholder="100.00 - 50,000.00">
+            <span id="currencySymbol" class="input-group-text bg-transparent text-warning border-0">₹</span>
+            <input type="text" id="amountInputBox" class="form-control bg-transparent text-white border-0 shadow-none" placeholder="100.00 - 50,000.00">
             <span class="input-group-text bg-transparent text-muted border-0" style="cursor: pointer;">✕</span>
         </div>
     </div>
 
+    <!-- AR Wallet Description Box (Only for ARPay) -->
+    <div id="arWalletInfoCard" class="card p-4 shadow mb-4" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px; display: none;">
+        <div class="d-flex align-items-center mb-3">
+            <span class="fs-4 me-2">👝</span>
+            <h5 class="mb-0 fw-bold" style="color: #ffc107;">AR Wallet</h5>
+        </div>
+        <div class="text-white" style="font-size: 13px; line-height: 1.6;">
+            <p class="mb-3" style="color: #ffc107;">AR Wallet is a third-party payment service platform that facilitates fast payments on the platform using ARB (digital currency)</p>
+            <p class="mb-3 fw-bold" style="color: #ffc107;">Safe, stable and fast</p>
+            <p class="mb-3" style="color: #ffc107;">How to activate AR wallet ></p>
+            <h6 class="fw-bold mb-2" style="color: #ffc107;">AR wallet features</h6>
+            <p class="mb-2" style="color: #ffc107;">You only need dmfirst to withdraw the balance to AR Wallet</p>
+            <p class="mb-2" style="color: #ffc107;">When you want to play games, you can quickly recharge to the dmfirst platform through AR Pay, with the recharge process taking only 5 seconds to complete</p>
+            <p class="mb-2" style="color: #ffc107;">When you need to withdraw money to your bank card, you can quickly sell ARB through UPI in your AR wallet to get rupees, and you can also get additional rewards!</p>
+            <p class="mb-3" style="color: #ffc107;">This method reduces your bank transaction issues while you are playing, so you don't need to worry about bank limits. You just need to sell to UPI when you need to use the funds.</p>
+            <button class="btn btn-warning w-100 fw-bold py-2" style="background-color: #f0c040; border: none; color: #12281e; border-radius: 6px;">activate AR wallet</button>
+        </div>
+    </div>
+
     <!-- Recharge Instructions Card -->
-    <div class="card p-4 shadow" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
+    <div class="card p-4 shadow mb-5" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
         <div class="d-flex align-items-center mb-3">
             <span class="fs-4 me-2">📖</span>
             <h5 class="mb-0 fw-bold" style="color: #ffc107;">Recharge instructions</h5>
@@ -93,18 +134,109 @@
         
         <div class="text-white" style="font-size: 13px; line-height: 1.6;">
             <p class="mb-3">
-                <span style="color: #ffc107;">♦</span> If the transfer time is up, please fill out the deposit form again.
+                <span style="color: #ffc107;">♦</span> If the transfer time is up, please fill out the deposit form again[cite: 23].
             </p>
             <p class="mb-3">
-                <span style="color: #ffc107;">♦</span> The transfer amount must match the order you created, otherwise the money cannot be credited successfully.
+                <span style="color: #ffc107;">♦</span> The transfer amount must match the order you created, otherwise the money cannot be credited successfully[cite: 23].
             </p>
             <p class="mb-3">
-                <span style="color: #ffc107;">♦</span> If you transfer the wrong amount, our company will not be responsible for the lost amount!
+                <span style="color: #ffc107;">♦</span> If you transfer the wrong amount, our company will not be responsible for the lost amount![cite: 23]
             </p>
             <p class="mb-0">
-                <span style="color: #ffc107;">♦</span> Note: do not cancel the deposit order after the money has been transferred.
+                <span style="color: #ffc107;">♦</span> Note: do not cancel the deposit order after the money has been transferred[cite: 23].
             </p>
         </div>
     </div>
 </div>
+
+<!-- Bottom Fixed Footer with Dynamic Method Name and Deposit Button -->
+<div class="fixed-bottom p-3" style="background-color: #12281e; border-top: 1px solid #2e7d32;">
+    <div class="container d-flex justify-content-between align-items-center" style="max-width: 500px;">
+        <div>
+            <div class="text-white small" style="font-size: 12px;">Recharge Method:</div>
+            <div id="footerMethodName" class="fw-bold" style="color: #ffc107; font-size: 16px;">UPI-QR</div>
+        </div>
+        <button type="button" class="btn btn-success px-5 fw-bold py-2" style="background-color: #198754; border-color: #198754; border-radius: 6px;">Deposit</button>
+    </div>
+</div>
+
+<!-- JavaScript for Dynamic Method Switching -->
+<script>
+    function switchTab(methodName) {
+        // Reset all tabs border color
+        const tabs = ['tab-upi', 'tab-upiqr', 'tab-ewallet', 'tab-paytm', 'tab-usdt', 'tab-arpay'];
+        tabs.forEach(t => {
+            document.getElementById(t).style.borderColor = "#2e7d32";
+        });
+
+        // Highlight selected tab based on method name
+        if(methodName === 'UPI-QR') document.getElementById('tab-upi').style.borderColor = "#ffc107";
+        if(methodName === 'UPI x QR') document.getElementById('tab-upiqr').style.borderColor = "#ffc107";
+        if(methodName === 'E-Wallet') document.getElementById('tab-ewallet').style.borderColor = "#ffc107";
+        if(methodName === 'Paytm x QR') document.getElementById('tab-paytm').style.borderColor = "#ffc107";
+        if(methodName === 'USDT-TRC20') document.getElementById('tab-usdt').style.borderColor = "#ffc107";
+        if(methodName === 'ARPay') document.getElementById('tab-arpay').style.borderColor = "#ffc107";
+
+        // Update footer method text
+        document.getElementById('footerMethodName').innerText = methodName;
+
+        // Handle specific views for USDT and ARPay
+        const arpayExtra = document.getElementById('arpayExtraSection');
+        const arWalletInfo = document.getElementById('arWalletInfoCard');
+        const amountTitle = document.getElementById('amountTitle');
+        const currencySymbol = document.getElementById('currencySymbol');
+        const amountInputBox = document.getElementById('amountInputBox');
+        const amountButtonsGrid = document.getElementById('amountButtonsGrid');
+
+        if(methodName === 'USDT-TRC20') {
+            amountTitle.innerText = "Select amount of USDT";
+            currencySymbol.innerText = "₮";
+            amountInputBox.placeholder = "Please enter USDT amount";
+            arpayExtra.style.display = "none";
+            arWalletInfo.style.display = "none";
+            amountButtonsGrid.innerHTML = `
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 10</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 50</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 100</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 200</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 500</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 1K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 2K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 3K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 5K</button></div>
+            `;
+        } else if(methodName === 'ARPay') {
+            arpayExtra.style.display = "block";
+            arWalletInfo.style.display = "block";
+            amountTitle.innerText = "Deposit amount";
+            currencySymbol.innerText = "₹";
+            amountInputBox.placeholder = "100.00 - 50,000.00";
+            amountButtonsGrid.innerHTML = `
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 100</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 500</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 1K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 2K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 3K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 5K</button></div>
+            `;
+        } else {
+            arpayExtra.style.display = "none";
+            arWalletInfo.style.display = "none";
+            amountTitle.innerText = "Deposit amount";
+            currencySymbol.innerText = "₹";
+            amountInputBox.placeholder = "100.00 - 50,000.00";
+            amountButtonsGrid.innerHTML = `
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 100</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 500</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 1K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 2K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 3K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 5K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 10K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 15K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 20K</button></div>
+            `;
+        }
+    }
+</script>
 {% endblock %}

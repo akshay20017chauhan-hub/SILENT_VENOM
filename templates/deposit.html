@@ -2,17 +2,86 @@
 
 {% block content %}
 <div class="container py-4 text-white" style="max-width: 500px;">
-    <!-- Top bar / Back -->
-    <div class="d-flex align-items-center mb-3">
-        <a href="{{ url_for('dashboard') }}" class="text-white text-decoration-none fs-4 me-3">❮</a>
-        <h4 class="mb-0 fw-bold" style="color: #ffc107;">Deposit</h4>
+    <!-- Top bar / Back & Deposit History -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex align-items-center">
+            <a href="{{ url_for('dashboard') }}" class="text-white text-decoration-none fs-4 me-3">❮</a>
+            <h4 class="mb-0 fw-bold" style="color: #ffc107;">Deposit</h4>
+        </div>
+        <a href="#" class="text-decoration-none" style="color: #ffc107; font-size: 14px;">Deposit history</a>
     </div>
 
-    <!-- Recharge Method Card -->
+    <!-- Balance Card -->
+    <div class="card p-4 mb-4 shadow" style="background: linear-gradient(135deg, #0d5c3a, #198754); border: none; border-radius: 12px; color: white;">
+        <div class="d-flex align-items-center mb-2">
+            <span class="me-2">💰</span>
+            <span style="font-size: 14px;">Balance</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="fw-bold mb-0">₹0.00</h3>
+            <button class="btn btn-sm btn-link text-white p-0" style="font-size: 20px;">🔄</button>
+        </div>
+    </div>
+
+    <!-- Recharge Methods Grid -->
+    <div class="row g-2 mb-4">
+        <div class="col-4">
+            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
+                <div style="font-size: 20px; color: #ffc107;">📱</div>
+                <div class="small fw-bold text-white mt-1">UPI-QR</div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
+                <div style="font-size: 20px; color: #ffc107;">🔲</div>
+                <div class="small fw-bold text-white mt-1">UPI x QR</div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
+                <div style="font-size: 20px; color: #ffc107;">💳</div>
+                <div class="small fw-bold text-white mt-1">E-Wallet</div>
+            </div>
+        </div>
+        <div class="col-4 mt-2">
+            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
+                <div style="font-size: 20px; color: #ffc107;">🅿️</div>
+                <div class="small fw-bold text-white mt-1">Paytm x QR</div>
+            </div>
+        </div>
+        <div class="col-4 mt-2">
+            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
+                <div style="font-size: 20px; color: #ffc107;">₮</div>
+                <div class="small fw-bold text-white mt-1">USDT-TRC20</div>
+            </div>
+        </div>
+        <div class="col-4 mt-2">
+            <div class="p-3 text-center rounded border border-success" style="background-color: #12281e; cursor: pointer;">
+                <div style="font-size: 20px; color: #ffc107;">🅰️</div>
+                <div class="small fw-bold text-white mt-1">ARPay</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Amount Section -->
     <div class="card p-3 mb-4 shadow" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
-        <div class="text-white mb-2" style="font-size: 15px;">Recharge Method:</div>
-        <div class="fw-bold mb-3" style="color: #ffc107; font-size: 18px;">UPI-QR</div>
-        <a href="#" class="btn btn-success w-100 fw-bold py-2" style="background-color: #198754; border-color: #198754;">Deposit</a>
+        <div class="d-flex align-items-center mb-3">
+            <span class="me-2">💰</span>
+            <h5 class="mb-0 fw-bold" style="color: #ffc107;">Deposit amount</h5>
+        </div>
+        <div class="row g-2 mb-3">
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 100</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 500</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 1K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 2K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 3K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 5K</button></div>
+        </div>
+        <div class="input-group mb-2" style="background: #0f241a; border: 1px solid #2e7d32; border-radius: 6px;">
+            <span class="input-group-text bg-transparent text-warning border-0">₹</span>
+            <input type="text" class="form-control bg-transparent text-white border-0 shadow-none" placeholder="100.00 - 50,000.00">
+            <span class="input-group-text bg-transparent text-muted border-0" style="cursor: pointer;">✕</span>
+        </div>
     </div>
 
     <!-- Recharge Instructions Card -->

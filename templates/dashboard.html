@@ -55,121 +55,136 @@
 <div id="depositBonusModal" class="sv-modal-overlay" style="display: none;">
     <div class="sv-modal-card scam-card" style="max-height: 80vh; overflow-y: auto;">
         <div class="sv-modal-header d-flex justify-content-between align-items-center">
-            <span class="fw-bold">Extra first deposit bonus</span>
+            <span class="fw-bold">First deposit bonus</span>
             <button type="button" class="btn-close btn-close-white" onclick="closeAllModals()"></button>
         </div>
         <div class="sv-modal-body text-start p-3">
-            <p class="small text-center mb-3 text-white">Each account can only receive rewards once</p>
-
-            <!-- Bonus Item 1 -->
+            
+            <!-- Tier 1: 1000000 -->
             <div class="p-3 mb-3 rounded" style="background: rgba(0,255,0,0.05); border: 1px solid #198754;">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold" style="color: #ff4d4d; font-size: 13px;">Deposit 1000000 for the first time and you will receive 10000 bonus</span>
-                    <span class="text-warning fw-bold">+₹10,000.00</span>
+                    <span class="fw-bold" style="color: #ffc107; font-size: 14px;">First deposit 1000000</span>
+                    <span class="fw-bold" style="color: #ffc107;">+ ₹10,000.00</span>
                 </div>
-                <p class="small mt-1 text-white mb-2">First deposit 1000000</p>
-                <div class="progress mb-2" style="height: 6px; background-color: #0f241a;">
+                <p class="small mt-1 text-white mb-2" style="font-size: 12px;">Deposit 1000000 for the first time and you will receive 10000 bonus</p>
+                <div class="progress mb-2" style="height: 6px; background-color: #d1d5db; border-radius: 3px;">
                     <div class="progress-bar bg-success" style="width: 0%;"></div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <small style="color: #ff4d4d;">0/1000000</small>
-                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px;">Deposit</a>
+                    <small style="color: #9ca3af;">0/1000000</small>
+                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px; background-color: #198754; border-color: #198754;">Deposit</a>
                 </div>
             </div>
 
-            <!-- Bonus Item 2 -->
+            <!-- Tier 2: 50000 -->
             <div class="p-3 mb-3 rounded" style="background: rgba(0,255,0,0.05); border: 1px solid #198754;">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold" style="color: #ff4d4d; font-size: 13px;">Deposit 10000 for the first time and you will receive 288 bonus</span>
-                    <span class="text-warning fw-bold">+₹288.00</span>
+                    <span class="fw-bold" style="color: #ffc107; font-size: 14px;">First deposit 50000</span>
+                    <span class="fw-bold" style="color: #ffc107;">+ ₹588.00</span>
                 </div>
-                <p class="small mt-1 text-white mb-2">First deposit 10000</p>
-                <div class="progress mb-2" style="height: 6px; background-color: #0f241a;">
+                <p class="small mt-1 text-white mb-2" style="font-size: 12px;">Deposit 50000 for the first time and you will receive 588 bonus</p>
+                <div class="progress mb-2" style="height: 6px; background-color: #d1d5db; border-radius: 3px;">
                     <div class="progress-bar bg-success" style="width: 0%;"></div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <small style="color: #ff4d4d;">0/10000</small>
-                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px;">Deposit</a>
+                    <small style="color: #9ca3af;">0/50000</small>
+                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px; background-color: #198754; border-color: #198754;">Deposit</a>
                 </div>
             </div>
 
-            <!-- Bonus Item 3 -->
+            <!-- Tier 3: 10000 -->
             <div class="p-3 mb-3 rounded" style="background: rgba(0,255,0,0.05); border: 1px solid #198754;">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold" style="color: #ff4d4d; font-size: 13px;">Deposit 5000 for the first time and you will receive 188 bonus</span>
-                    <span class="text-warning fw-bold">+₹188.00</span>
+                    <span class="fw-bold" style="color: #ffc107; font-size: 14px;">First deposit 10000</span>
+                    <span class="fw-bold" style="color: #ffc107;">+ ₹288.00</span>
                 </div>
-                <p class="small mt-1 text-white mb-2">First deposit 5000</p>
-                <div class="progress mb-2" style="height: 6px; background-color: #0f241a;">
+                <p class="small mt-1 text-white mb-2" style="font-size: 12px;">Deposit 10000 for the first time and you will receive 288 bonus</p>
+                <div class="progress mb-2" style="height: 6px; background-color: #d1d5db; border-radius: 3px;">
                     <div class="progress-bar bg-success" style="width: 0%;"></div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <small style="color: #ff4d4d;">0/5000</small>
-                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px;">Deposit</a>
+                    <small style="color: #9ca3af;">0/10000</small>
+                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px; background-color: #198754; border-color: #198754;">Deposit</a>
                 </div>
             </div>
 
-            <!-- Bonus Item 4 -->
+            <!-- Tier 4: 5000 -->
             <div class="p-3 mb-3 rounded" style="background: rgba(0,255,0,0.05); border: 1px solid #198754;">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold" style="color: #ff4d4d; font-size: 13px;">Deposit 1000 for the first time and you will receive 58 bonus</span>
-                    <span class="text-warning fw-bold">+₹58.00</span>
+                    <span class="fw-bold" style="color: #ffc107; font-size: 14px;">First deposit 5000</span>
+                    <span class="fw-bold" style="color: #ffc107;">+ ₹188.00</span>
                 </div>
-                <p class="small mt-1 text-white mb-2">First deposit 1000</p>
-                <div class="progress mb-2" style="height: 6px; background-color: #0f241a;">
+                <p class="small mt-1 text-white mb-2" style="font-size: 12px;">Deposit 5000 for the first time and you will receive 188 bonus</p>
+                <div class="progress mb-2" style="height: 6px; background-color: #d1d5db; border-radius: 3px;">
                     <div class="progress-bar bg-success" style="width: 0%;"></div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <small style="color: #ff4d4d;">0/1000</small>
-                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px;">Deposit</a>
+                    <small style="color: #9ca3af;">0/5000</small>
+                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px; background-color: #198754; border-color: #198754;">Deposit</a>
                 </div>
             </div>
 
-            <!-- Bonus Item 5 -->
+            <!-- Tier 5: 1000 -->
             <div class="p-3 mb-3 rounded" style="background: rgba(0,255,0,0.05); border: 1px solid #198754;">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold" style="color: #ff4d4d; font-size: 13px;">Deposit 500 for the first time and you will receive 28 bonus</span>
-                    <span class="text-warning fw-bold">+₹28.00</span>
+                    <span class="fw-bold" style="color: #ffc107; font-size: 14px;">First deposit 1000</span>
+                    <span class="fw-bold" style="color: #ffc107;">+ ₹58.00</span>
                 </div>
-                <p class="small mt-1 text-white mb-2">First deposit 500</p>
-                <div class="progress mb-2" style="height: 6px; background-color: #0f241a;">
+                <p class="small mt-1 text-white mb-2" style="font-size: 12px;">Deposit 1000 for the first time and you will receive 58 bonus</p>
+                <div class="progress mb-2" style="height: 6px; background-color: #d1d5db; border-radius: 3px;">
                     <div class="progress-bar bg-success" style="width: 0%;"></div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <small style="color: #ff4d4d;">0/500</small>
-                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px;">Deposit</a>
+                    <small style="color: #9ca3af;">0/1000</small>
+                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px; background-color: #198754; border-color: #198754;">Deposit</a>
                 </div>
             </div>
 
-            <!-- Bonus Item 6 -->
+            <!-- Tier 6: 500 -->
             <div class="p-3 mb-3 rounded" style="background: rgba(0,255,0,0.05); border: 1px solid #198754;">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold" style="color: #ff4d4d; font-size: 13px;">Deposit 300 for the first time and you will receive 18 bonus</span>
-                    <span class="text-warning fw-bold">+₹18.00</span>
+                    <span class="fw-bold" style="color: #ffc107; font-size: 14px;">First deposit 500</span>
+                    <span class="fw-bold" style="color: #ffc107;">+ ₹28.00</span>
                 </div>
-                <p class="small mt-1 text-white mb-2">First deposit 300</p>
-                <div class="progress mb-2" style="height: 6px; background-color: #0f241a;">
+                <p class="small mt-1 text-white mb-2" style="font-size: 12px;">Deposit 500 for the first time and you will receive 28 bonus</p>
+                <div class="progress mb-2" style="height: 6px; background-color: #d1d5db; border-radius: 3px;">
                     <div class="progress-bar bg-success" style="width: 0%;"></div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <small style="color: #ff4d4d;">0/300</small>
-                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px;">Deposit</a>
+                    <small style="color: #9ca3af;">0/500</small>
+                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px; background-color: #198754; border-color: #198754;">Deposit</a>
                 </div>
             </div>
 
-            <!-- Bonus Item 7 -->
+            <!-- Tier 7: 300 -->
             <div class="p-3 mb-3 rounded" style="background: rgba(0,255,0,0.05); border: 1px solid #198754;">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold" style="color: #ff4d4d; font-size: 13px;">Deposit 100 for the first time and you will receive 8 bonus</span>
-                    <span class="text-warning fw-bold">+₹8.00</span>
+                    <span class="fw-bold" style="color: #ffc107; font-size: 14px;">First deposit 300</span>
+                    <span class="fw-bold" style="color: #ffc107;">+ ₹18.00</span>
                 </div>
-                <p class="small mt-1 text-white mb-2">First deposit 100</p>
-                <div class="progress mb-2" style="height: 6px; background-color: #0f241a;">
+                <p class="small mt-1 text-white mb-2" style="font-size: 12px;">Deposit 300 for the first time and you will receive 18 bonus</p>
+                <div class="progress mb-2" style="height: 6px; background-color: #d1d5db; border-radius: 3px;">
                     <div class="progress-bar bg-success" style="width: 0%;"></div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <small style="color: #ff4d4d;">0/100</small>
-                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px;">Deposit</a>
+                    <small style="color: #9ca3af;">0/300</small>
+                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px; background-color: #198754; border-color: #198754;">Deposit</a>
+                </div>
+            </div>
+
+            <!-- Tier 8: 100 -->
+            <div class="p-3 mb-3 rounded" style="background: rgba(0,255,0,0.05); border: 1px solid #198754;">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="fw-bold" style="color: #ffc107; font-size: 14px;">First deposit 100</span>
+                    <span class="fw-bold" style="color: #ffc107;">+ ₹8.00</span>
+                </div>
+                <p class="small mt-1 text-white mb-2" style="font-size: 12px;">Deposit 100 for the first time and you will receive 8 bonus</p>
+                <div class="progress mb-2" style="height: 6px; background-color: #d1d5db; border-radius: 3px;">
+                    <div class="progress-bar bg-success" style="width: 0%;"></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <small style="color: #9ca3af;">0/100</small>
+                    <a href="{{ url_for('deposit') }}" class="btn btn-success btn-sm px-4 py-1" style="font-size: 12px; background-color: #198754; border-color: #198754;">Deposit</a>
                 </div>
             </div>
 
@@ -179,13 +194,46 @@
         <div class="sv-modal-footer d-flex justify-content-between align-items-center px-4 py-3" style="background: #152d22; border-top: 1px solid #2e7d32;">
             <div class="form-check d-flex align-items-center mb-0">
                 <input class="form-check-input me-2" type="checkbox" id="noMoreReminders" style="background-color: #12281e; border-color: #2e7d32; cursor: pointer;">
-                <label class="form-check-label text-muted small" for="noMoreReminders" style="cursor: pointer; font-size: 13px;">
+                <label class="form-check-label text-white small" for="noMoreReminders" style="cursor: pointer; font-size: 13px;">
                     No more reminders today
                 </label>
             </div>
-            <button type="button" class="btn btn-warning btn-sm px-4 fw-bold" onclick="closeAllModals()" style="background-color: #f0c040; border: none; border-radius: 20px; color: #12281e;">
+            <button type="button" class="btn btn-warning btn-sm px-4 fw-bold" onclick="showActivityRulesModal()" style="background-color: #f0c040; border: none; border-radius: 20px; color: #12281e;">
                 Activity
             </button>
+        </div>
+    </div>
+</div>
+
+<!-- 4. Activity Rules Modal Popup (Opens when Activity button is clicked) -->
+<div id="activityRulesModal" class="sv-modal-overlay" style="display: none;">
+    <div class="sv-modal-card scam-card" style="max-height: 85vh; overflow-y: auto; text-align: left;">
+        <div class="sv-modal-header text-center position-relative">
+            <span class="fw-bold" style="color: #ffc107; font-size: 18px;">Activity Rules</span>
+            <button type="button" class="btn-close btn-close-white position-absolute end-0 top-50 translate-middle-y me-3" onclick="closeAllModals()"></button>
+        </div>
+        <div class="sv-modal-body p-4 text-white" style="font-size: 13px; line-height: 1.6;">
+            <p class="mb-3">
+                <span style="color: #ffc107;">♦</span> Exclusive for the first recharge of the account. There is only one chance. The more you recharge, the more rewards you will receive. The highest reward is ₹10,000.00;
+            </p>
+            <p class="mb-3">
+                <span style="color: #ffc107;">♦</span> Activities cannot be participated in repeatedly;
+            </p>
+            <p class="mb-3">
+                <span style="color: #ffc107;">♦</span> Rewards can only be claimed manually on IOS, Android, H5, and PC;
+            </p>
+            <p class="mb-3">
+                <span style="color: #ffc107;">♦</span> The bonus (excluding the principal) given in this event requires 1 times the coding turnover (i.e. valid bets) before it can be withdrawn, and the coding does not limit the platform;
+            </p>
+            <p class="mb-3">
+                <span style="color: #ffc107;">♦</span> This event is limited to normal human operations by the account owner. It is prohibited to rent, use plugins, robots, gamble with different accounts, brush each other, arbitrage, interfaces, protocols, exploit loopholes, group control or other technical means to participate, otherwise it will be canceled or Rewards will be deducted, frozen, or even blacklisted;
+            </p>
+            <p class="mb-0">
+                <span style="color: #ffc107;">♦</span> In order to avoid differences in text understanding, the platform reserves the right of final interpretation of this event.
+            </p>
+        </div>
+        <div class="sv-modal-footer text-center p-3" style="background: #152d22; border-top: 1px solid #2e7d32;">
+            <button type="button" class="btn btn-success btn-sm px-5 fw-bold" onclick="showDepositBonusModal()" style="background-color: #198754; border: none; border-radius: 6px;">Back to Bonus</button>
         </div>
     </div>
 </div>
@@ -203,13 +251,20 @@
 
     function showDepositBonusModal() {
         document.getElementById("scamModal").style.display = "none";
+        document.getElementById("activityRulesModal").style.display = "none";
         document.getElementById("depositBonusModal").style.display = "flex";
+    }
+
+    function showActivityRulesModal() {
+        document.getElementById("depositBonusModal").style.display = "none";
+        document.getElementById("activityRulesModal").style.display = "flex";
     }
 
     function closeAllModals() {
         document.getElementById("welcomeModal").style.display = "none";
         document.getElementById("scamModal").style.display = "none";
         document.getElementById("depositBonusModal").style.display = "none";
+        document.getElementById("activityRulesModal").style.display = "none";
     }
 
     function openDepositPage() {

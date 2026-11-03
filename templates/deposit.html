@@ -26,7 +26,7 @@
     <!-- Recharge Methods Grid -->
     <div class="row g-2 mb-4">
         <div class="col-3">
-            <div id="tab-upi" onclick="switchTab('UPI-QR')" class="p-2 text-center rounded border" style="background-color: #12281e; border-color: #ffc107 !important; cursor: pointer; height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div id="tab-upi" onclick="switchTab('UPI-QR')" class="p-2 text-center rounded border" style="background-color: #12281e; border-color: #ffc107; cursor: pointer; height: 75px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <div style="font-size: 16px; color: #ffc107;">📱</div>
                 <div class="small fw-bold text-white mt-1" style="font-size: 11px;">UPI-QR</div>
             </div>
@@ -65,7 +65,7 @@
 
     <!-- Dynamic Section for ARPay Special Views -->
     <div id="arpayExtraSection" style="display: none;">
-        <div class="card p-3 mb-3 shadow d-flex flex-row justify-content-between align-items-center" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
+        <div class="card p-3 mb-3 shadow d-flex flex-row justify-content-between align-items-center" style="background-color: #12281e; border: 1px solid #ffc107; border-radius: 12px;">
             <div class="d-flex align-items-center">
                 <span class="me-2 text-warning">📄</span>
                 <span class="text-white" style="font-size: 14px;">AR Pay transaction rules</span>
@@ -73,33 +73,33 @@
             <span class="text-warning" style="font-size: 14px; cursor: pointer;">Check ></span>
         </div>
 
-        <div class="card p-3 mb-4 shadow d-flex flex-row justify-content-between align-items-center" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
+        <div class="card p-3 mb-4 shadow d-flex flex-row justify-content-between align-items-center" style="background-color: #12281e; border: 1px solid #ffc107; border-radius: 12px;">
             <div class="d-flex align-items-center">
                 <span class="me-2 text-warning fw-bold">⚠️</span>
                 <span class="text-white small">Your AR wallet has not been activated yet</span>
             </div>
-            <button class="btn btn-warning btn-sm fw-bold px-3 py-1" style="background-color: #f0c040; border: none; font-size: 12px; border-radius: 4px; color: #12281e;">activate AR wallet</button>
+            <button onclick="startARActivationFlow()" class="btn btn-sm fw-bold px-3 py-1 text-white" style="background-color: #198754; border: none; font-size: 12px; border-radius: 4px;">activate AR wallet</button>
         </div>
     </div>
 
     <!-- Deposit Amount Section -->
-    <div class="card p-3 mb-4 shadow" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
+    <div class="card p-3 mb-4 shadow" style="background-color: #12281e; border: 1px solid #ffc107; border-radius: 12px;">
         <div class="d-flex align-items-center mb-3">
             <span class="me-2">💰</span>
             <h5 id="amountTitle" class="mb-0 fw-bold" style="color: #ffc107;">Deposit amount</h5>
         </div>
         <div class="row g-2 mb-3" id="amountButtonsGrid">
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 100</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 500</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 1K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 2K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 3K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 5K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 10K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 15K</button></div>
-            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 20K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 100</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 500</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 1K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 2K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 3K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 5K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 10K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 15K</button></div>
+            <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 20K</button></div>
         </div>
-        <div class="input-group mb-2" style="background: #0f241a; border: 1px solid #2e7d32; border-radius: 6px;">
+        <div class="input-group mb-2" style="background: #0f241a; border: 1px solid #ffc107; border-radius: 6px;">
             <span id="currencySymbol" class="input-group-text bg-transparent text-warning border-0">₹</span>
             <input type="text" id="amountInputBox" class="form-control bg-transparent text-white border-0 shadow-none" placeholder="100.00 - 50,000.00">
             <span class="input-group-text bg-transparent text-muted border-0" style="cursor: pointer;">✕</span>
@@ -107,42 +107,42 @@
     </div>
 
     <!-- AR Wallet Description Box (Only for ARPay) -->
-    <div id="arWalletInfoCard" class="card p-4 shadow mb-4" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px; display: none;">
+    <div id="arWalletInfoCard" class="card p-4 shadow mb-4" style="background-color: #12281e; border: 1px solid #ffc107; border-radius: 12px; display: none;">
         <div class="d-flex align-items-center mb-3">
             <span class="fs-4 me-2">👝</span>
             <h5 class="mb-0 fw-bold" style="color: #ffc107;">AR Wallet</h5>
         </div>
         <div class="text-white" style="font-size: 13px; line-height: 1.6;">
-            <p class="mb-3" style="color: #ffc107;">AR Wallet is a third-party payment service platform that facilitates fast payments on the platform using ARB (digital currency)</p>
-            <p class="mb-3 fw-bold" style="color: #ffc107;">Safe, stable and fast</p>
-            <p class="mb-3" style="color: #ffc107;">How to activate AR wallet ></p>
+            <p class="mb-3 text-white">AR Wallet is a third-party payment service platform that facilitates fast payments on the platform using ARB (digital currency)</p>
+            <p class="mb-3 fw-bold text-white">Safe, stable and fast[cite: 30]</p>
+            <p class="mb-3" style="color: #ffc107; cursor: pointer;" onclick="openActivationGuide()">How to activate AR Wallet ></p>
             <h6 class="fw-bold mb-2" style="color: #ffc107;">AR wallet features</h6>
-            <p class="mb-2" style="color: #ffc107;">You only need dmfirst to withdraw the balance to AR Wallet</p>
-            <p class="mb-2" style="color: #ffc107;">When you want to play games, you can quickly recharge to the dmfirst platform through AR Pay, with the recharge process taking only 5 seconds to complete</p>
-            <p class="mb-2" style="color: #ffc107;">When you need to withdraw money to your bank card, you can quickly sell ARB through UPI in your AR wallet to get rupees, and you can also get additional rewards!</p>
-            <p class="mb-3" style="color: #ffc107;">This method reduces your bank transaction issues while you are playing, so you don't need to worry about bank limits. You just need to sell to UPI when you need to use the funds.</p>
-            <button class="btn btn-warning w-100 fw-bold py-2" style="background-color: #f0c040; border: none; color: #12281e; border-radius: 6px;">activate AR wallet</button>
+            <p class="mb-2 text-white">You only need dmfirst to withdraw the balance to AR Wallet[cite: 28]</p>
+            <p class="mb-2 text-white">When you want to play games, you can quickly recharge to the dmfirst platform through AR Pay, with the recharge process taking only 5 seconds to complete[cite: 28]</p>
+            <p class="mb-2 text-white">When you need to withdraw money to your bank card, you can quickly sell ARB through UPI in your AR wallet to get rupees, and you can also get additional rewards![cite: 28]</p>
+            <p class="mb-3 text-white">This method reduces your bank transaction issues while you are playing, so you don't need to worry about bank limits. You just need to sell to UPI when you need to use the funds.[cite: 28]</p>
+            <button onclick="startARActivationFlow()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">activate AR wallet</button>
         </div>
     </div>
 
     <!-- Recharge Instructions Card -->
-    <div class="card p-4 shadow mb-5" style="background-color: #12281e; border: 1px solid #2e7d32; border-radius: 12px;">
+    <div class="card p-4 shadow mb-5" style="background-color: #12281e; border: 1px solid #ffc107; border-radius: 12px;">
         <div class="d-flex align-items-center mb-3">
             <span class="fs-4 me-2">📖</span>
             <h5 class="mb-0 fw-bold" style="color: #ffc107;">Recharge instructions</h5>
         </div>
         
         <div class="text-white" style="font-size: 13px; line-height: 1.6;">
-            <p class="mb-3">
+            <p class="mb-3 text-white">
                 <span style="color: #ffc107;">♦</span> If the transfer time is up, please fill out the deposit form again[cite: 23].
             </p>
-            <p class="mb-3">
+            <p class="mb-3 text-white">
                 <span style="color: #ffc107;">♦</span> The transfer amount must match the order you created, otherwise the money cannot be credited successfully[cite: 23].
             </p>
-            <p class="mb-3">
+            <p class="mb-3 text-white">
                 <span style="color: #ffc107;">♦</span> If you transfer the wrong amount, our company will not be responsible for the lost amount![cite: 23]
             </p>
-            <p class="mb-0">
+            <p class="mb-0 text-white">
                 <span style="color: #ffc107;">♦</span> Note: do not cancel the deposit order after the money has been transferred[cite: 23].
             </p>
         </div>
@@ -150,26 +150,81 @@
 </div>
 
 <!-- Bottom Fixed Footer with Dynamic Method Name and Deposit Button -->
-<div class="fixed-bottom p-3" style="background-color: #12281e; border-top: 1px solid #2e7d32;">
+<div class="fixed-bottom p-3" style="background-color: #12281e; border-top: 1px solid #ffc107;">
     <div class="container d-flex justify-content-between align-items-center" style="max-width: 500px;">
         <div>
             <div class="text-white small" style="font-size: 12px;">Recharge Method:</div>
             <div id="footerMethodName" class="fw-bold" style="color: #ffc107; font-size: 16px;">UPI-QR</div>
         </div>
-        <button type="button" class="btn btn-success px-5 fw-bold py-2" style="background-color: #198754; border-color: #198754; border-radius: 6px;">Deposit</button>
+        <button type="button" class="btn px-5 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Deposit</button>
     </div>
 </div>
 
-<!-- JavaScript for Dynamic Method Switching -->
+<!-- ================= MODALS & OVERLAYS ================= -->
+
+<!-- 1. Loading & Venom Poster Overlay -->
+<div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; background: rgba(0,0,0,0.85); justify-content: center; align-items: center;">
+    <div style="position: absolute; width: 100%; height: 100%; background: url('{{ url_for('static', filename='ScamAlertPoster.png') }}') center/cover no-repeat; opacity: 0.25; z-index: 1;"></div>
+    <div style="position: relative; z-index: 2; text-align: center; background: #fff; padding: 40px; border-radius: 16px; width: 90%; max-width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <div class="spinner-border text-warning mb-3" role="status" style="width: 3rem; height: 3rem;"></div>
+        <h5 class="fw-bold text-dark mb-1">Loading AR Wallet...</h5>
+        <p class="text-muted small mb-0">zhrmb.payzuva.com</p>
+    </div>
+</div>
+
+<!-- 2. AR Wallet Simulated Browser Modal (zhrmb.payzuva.com) -->
+<div id="arWalletModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99998; background: rgba(0,0,0,0.8); justify-content: center; align-items: center;">
+    <div style="background: #ffffff; width: 100%; max-width: 420px; height: 90vh; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; color: #333; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+        
+        <!-- Browser Top Header Bar -->
+        <div style="background: #f1f3f5; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dee2e6;">
+            <div class="d-flex align-items-center">
+                <span onclick="closeARWalletModal()" style="cursor: pointer; font-size: 18px; margin-right: 15px;" class="fw-bold text-secondary">❮</span>
+                <span class="fw-bold text-dark">AR wallet</span>
+            </div>
+            <div>
+                <span onclick="reloadARWallet()" style="cursor: pointer; font-size: 16px; margin-right: 15px;" title="Reload">🔄</span>
+                <span onclick="closeARWalletModal()" style="cursor: pointer; font-size: 18px;" class="fw-bold text-secondary" title="Close">✕</span>
+            </div>
+        </div>
+
+        <!-- Modal Body Content (Dynamic Steps) -->
+        <div id="arWalletBodyContent" style="flex: 1; overflow-y: auto; padding: 20px; background: #fff;">
+            <!-- Initial AR Wallet Home inside Modal -->
+            <div class="card p-3 mb-3 border-0 text-white" style="background: #0f1d16; border-radius: 10px;">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="small text-muted">Wallet balance</span>
+                    <span class="badge bg-warning text-dark" style="font-size: 10px;">Not Activated</span>
+                </div>
+                <h3 class="fw-bold mb-0" style="color: #ffc107;">0.00 <span class="small text-white">INR</span></h3>
+                <div class="small mt-2" style="color: #ff4d4d;">Wallet is not activated</div>
+            </div>
+
+            <h5 class="fw-bold text-dark mb-2">AR Wallet</h5>
+            <p class="text-muted small mb-3">AR Wallet is a third-party payment service that uses ARB (digital currency) for a fast payment on the platform. It is Safe, stable and fast[cite: 30]</p>
+
+            <button onclick="openActivationGuide()" class="btn btn-warning w-100 fw-bold mb-4 py-2 text-dark" style="background-color: #ffc107; border: none; border-radius: 6px;">How to activate AR Wallet</button>
+
+            <h6 class="fw-bold text-dark mb-2">Features of AR wallet</h6>
+            <p class="text-muted small mb-3">You only need to withdraw the balance from AR0080 to AR wallet![cite: 30]</p>
+            <p class="text-muted small mb-3">When you want to have fun, you can quickly deposit to the AR0080 platform through AR Pay. It only takes 5 seconds to complete the deposit.[cite: 30]</p>
+            <p class="text-muted small mb-3">When you need to withdraw money to your bank card, you can quickly sell ARB coin in AR Wallet and withdraw in UPI, and you can also get additional rewards![cite: 30]</p>
+            <p class="text-muted small mb-4">This method reduces the transaction amount of your bank account while you are having fun. You don't need to worry about bank limit. You only need to sell your ARB when you want to withdraw in your UPI![cite: 30]</p>
+
+            <button onclick="goToStepMobile()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Activate AR Wallet</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- JavaScript for Interactive Flow -->
 <script>
     function switchTab(methodName) {
-        // Reset all tabs border color
         const tabs = ['tab-upi', 'tab-upiqr', 'tab-ewallet', 'tab-paytm', 'tab-usdt', 'tab-arpay'];
         tabs.forEach(t => {
             document.getElementById(t).style.borderColor = "#2e7d32";
         });
 
-        // Highlight selected tab based on method name
         if(methodName === 'UPI-QR') document.getElementById('tab-upi').style.borderColor = "#ffc107";
         if(methodName === 'UPI x QR') document.getElementById('tab-upiqr').style.borderColor = "#ffc107";
         if(methodName === 'E-Wallet') document.getElementById('tab-ewallet').style.borderColor = "#ffc107";
@@ -177,10 +232,8 @@
         if(methodName === 'USDT-TRC20') document.getElementById('tab-usdt').style.borderColor = "#ffc107";
         if(methodName === 'ARPay') document.getElementById('tab-arpay').style.borderColor = "#ffc107";
 
-        // Update footer method text
         document.getElementById('footerMethodName').innerText = methodName;
 
-        // Handle specific views for USDT and ARPay
         const arpayExtra = document.getElementById('arpayExtraSection');
         const arWalletInfo = document.getElementById('arWalletInfoCard');
         const amountTitle = document.getElementById('amountTitle');
@@ -195,15 +248,15 @@
             arpayExtra.style.display = "none";
             arWalletInfo.style.display = "none";
             amountButtonsGrid.innerHTML = `
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 10</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 50</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 100</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 200</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 500</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 1K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 2K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 3K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₮ 5K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 10</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 50</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 100</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 200</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 500</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 1K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 2K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 3K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₮ 5K</button></div>
             `;
         } else if(methodName === 'ARPay') {
             arpayExtra.style.display = "block";
@@ -212,12 +265,12 @@
             currencySymbol.innerText = "₹";
             amountInputBox.placeholder = "100.00 - 50,000.00";
             amountButtonsGrid.innerHTML = `
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 100</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 500</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 1K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 2K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 3K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 5K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 100</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 500</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 1K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 2K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 3K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 5K</button></div>
             `;
         } else {
             arpayExtra.style.display = "none";
@@ -226,17 +279,148 @@
             currencySymbol.innerText = "₹";
             amountInputBox.placeholder = "100.00 - 50,000.00";
             amountButtonsGrid.innerHTML = `
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 100</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 500</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 1K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 2K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 3K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 5K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 10K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 15K</button></div>
-                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #2e7d32;">₹ 20K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 100</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 500</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 1K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 2K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 3K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 5K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 10K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 15K</button></div>
+                <div class="col-4"><button class="btn btn-outline-success w-100 text-white py-2" style="border-color: #ffc107;">₹ 20K</button></div>
             `;
         }
+    }
+
+    // AR Wallet Activation Workflow triggers with loading overlay & venom poster background
+    function startARActivationFlow() {
+        document.getElementById('loadingOverlay').style.display = 'flex';
+        setTimeout(() => {
+            document.getElementById('loadingOverlay').style.display = 'none';
+            document.getElementById('arWalletModal').style.display = 'flex';
+        }, 2000);
+    }
+
+    function reloadARWallet() {
+        document.getElementById('loadingOverlay').style.display = 'flex';
+        document.getElementById('arWalletModal').style.display = 'none';
+        setTimeout(() => {
+            document.getElementById('loadingOverlay').style.display = 'none';
+            document.getElementById('arWalletModal').style.display = 'flex';
+        }, 1500);
+    }
+
+    function closeARWalletModal() {
+        document.getElementById('arWalletModal').style.display = 'none';
+    }
+
+    // Step 1: Mobile Number Verification
+    function goToStepMobile() {
+        const body = document.getElementById('arWalletBodyContent');
+        body.innerHTML = `
+            <div class="text-center mb-4">
+                <h5 class="fw-bold text-dark mb-1">Verify your mobile number</h5>
+                <p class="text-muted small">Please enter your mobile phone number to activate AR wallet.<br>Please use your own mobile number to activate[cite: 32, 38].</p>
+            </div>
+            <div class="input-group mb-3 border rounded p-2 align-items-center bg-light">
+                <span class="me-2">🇮🇳 +91</span>
+                <input type="number" id="userMobileInput" class="form-control border-0 bg-transparent shadow-none" placeholder="0 0 0 0 0 0 0 0 0 0">
+            </div>
+            <button onclick="goToStepOTP()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Continue</button>
+        `;
+    }
+
+    // Step 2: OTP Verification (Valid for 10 minutes)
+    function goToStepOTP() {
+        const mobile = document.getElementById('userMobileInput').value || "93****24";
+        const body = document.getElementById('arWalletBodyContent');
+        body.innerHTML = `
+            <div class="text-center mb-4">
+                <h5 class="fw-bold text-dark mb-1">enter verification code</h5>
+                <p class="text-muted small">Sending SMS verification code to your mobile phone number<br>+91 ${mobile}</p>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
+            </div>
+            <p class="text-center text-muted small mb-4">AR Wallet will resend SMS after <span id="timerCount">600</span>s (Valid for 10 mins)</p>
+            <button onclick="goToStepPassword()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Verify & Continue</button>
+        `;
+        startCountdown(600);
+    }
+
+    function startCountdown(duration) {
+        let timer = duration, minutes, seconds;
+        const interval = setInterval(function () {
+            let elem = document.getElementById('timerCount');
+            if(!elem) { clearInterval(interval); return; }
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            elem.textContent = timer;
+            if (--timer < 0) { clearInterval(interval); }
+        }, 1000);
+    }
+
+    // Step 3: Payment Password Setup
+    function goToStepPassword() {
+        const body = document.getElementById('arWalletBodyContent');
+        body.innerHTML = `
+            <div class="text-center mb-4">
+                <h5 class="fw-bold text-dark mb-1">Set up payment password</h5>
+                <p class="text-muted small">For the safety of your property, please set a payment password that you can remember.</p>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <input type="password" maxlength="1" class="form-control text-center mx-1" style="height: 50px; font-size: 20px;">
+                <input type="password" maxlength="1" class="form-control text-center mx-1" style="height: 50px; font-size: 20px;">
+                <input type="password" maxlength="1" class="form-control text-center mx-1" style="height: 50px; font-size: 20px;">
+                <input type="password" maxlength="1" class="form-control text-center mx-1" style="height: 50px; font-size: 20px;">
+            </div>
+            <div class="mb-3">
+                <label class="form-label small text-muted">Prompt / password hint</label>
+                <input type="text" class="form-control bg-light" placeholder="Please enter password prompt[cite: 33, 35]">
+            </div>
+            <button onclick="showSuccessModal()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Confirm activation</button>
+        `;
+    }
+
+    // Step 4: Success Popup with Green Buttons and White Text
+    function showSuccessModal() {
+        const body = document.getElementById('arWalletBodyContent');
+        body.innerHTML = `
+            <div class="text-center py-5">
+                <div style="font-size: 60px; color: #28a745;" class="mb-3">✅</div>
+                <h4 class="fw-bold text-dark mb-2">Activation Successful</h4>
+                <p class="text-muted small mb-5">congratulations! AR wallet activated successfully</p>
+                <div class="d-flex gap-2">
+                    <button onclick="closeARWalletModal()" class="btn w-50 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Return to Game</button>
+                    <button onclick="alert('Entering AR Wallet dashboard...'); closeARWalletModal();" class="btn w-50 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Enter AR wallet</button>
+                </div>
+            </div>
+        `;
+    }
+
+    // How to Activate Guide View
+    function openActivationGuide() {
+        const body = document.getElementById('arWalletBodyContent');
+        body.innerHTML = `
+            <div class="d-flex align-items-center mb-3">
+                <span onclick="closeARWalletModal(); switchTab('ARPay');" style="cursor: pointer; font-size: 18px;" class="fw-bold text-dark me-3">❮</span>
+                <h5 class="mb-0 fw-bold text-dark">How to activate</h5>
+            </div>
+            <p class="text-dark small fw-bold">1. Click to activate AR Wallet</p>
+            <p class="text-muted small">Please enter your mobile number first and click Continue. You can also activate via email[cite: 31].</p>
+            <p class="text-dark small fw-bold">2. Verify mobile number</p>
+            <p class="text-muted small">Enter the received verification code in the input box (Valid for 10 minutes). If not received, resend after 120 seconds[cite: 31].</p>
+            <p class="text-dark small fw-bold">3. Payment password</p>
+            <p class="text-muted small">Please set your payment password and password hint.</p>
+            <p class="text-dark small fw-bold">4. Successfully activated</p>
+            <p class="text-muted small mb-4">After successful activation, you can enter the AR wallet and start using it![cite: 33]</p>
+            <button onclick="goToStepMobile()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Proceed to Activate</button>
+        `;
     }
 </script>
 {% endblock %}

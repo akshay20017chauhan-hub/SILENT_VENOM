@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container py-4 text-white" style="max-width: 500px;">
+<div class="container py-4 text-white" style="max-width: 500px; position: relative;">
     <!-- Top bar / Back & Deposit History -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div class="d-flex align-items-center">
@@ -113,7 +113,7 @@
             <h5 class="mb-0 fw-bold" style="color: #ffc107;">AR Wallet</h5>
         </div>
         <div class="text-white" style="font-size: 13px; line-height: 1.6;">
-            <p class="mb-3 text-white">AR Wallet is a third-party payment service platform that facilitates fast payments on the platform using ARB (digital currency)</p>
+            <p class="mb-3 text-white">AR Wallet is a third-party payment service platform that facilitates fast payments on the platform using ARB (digital currency)[cite: 30]</p>
             <p class="mb-3 fw-bold text-white">Safe, stable and fast[cite: 30]</p>
             <p class="mb-3" style="color: #ffc107; cursor: pointer;" onclick="openActivationGuide()">How to activate AR Wallet ></p>
             <h6 class="fw-bold mb-2" style="color: #ffc107;">AR wallet features</h6>
@@ -162,20 +162,20 @@
 
 <!-- ================= MODALS & OVERLAYS ================= -->
 
-<!-- 1. Loading & Venom Poster Overlay -->
-<div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; background: rgba(0,0,0,0.85); justify-content: center; align-items: center;">
-    <div style="position: absolute; width: 100%; height: 100%; background: url('{{ url_for('static', filename='ScamAlertPoster.png') }}') center/cover no-repeat; opacity: 0.25; z-index: 1;"></div>
-    <div style="position: relative; z-index: 2; text-align: center; background: #fff; padding: 40px; border-radius: 16px; width: 90%; max-width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-        <div class="spinner-border text-warning mb-3" role="status" style="width: 3rem; height: 3rem;"></div>
-        <h5 class="fw-bold text-dark mb-1">Loading AR Wallet...</h5>
-        <p class="text-muted small mb-0">zhrmb.payzuva.com</p>
-    </div>
-</div>
-
-<!-- 2. AR Wallet Simulated Browser Modal (zhrmb.payzuva.com) -->
+<!-- AR Wallet Simulated Browser Modal Container (Inside which loading & steps happen) -->
 <div id="arWalletModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99998; background: rgba(0,0,0,0.8); justify-content: center; align-items: center;">
-    <div style="background: #ffffff; width: 100%; max-width: 420px; height: 90vh; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; color: #333; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+    <div style="position: relative; background: #ffffff; width: 100%; max-width: 420px; height: 90vh; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; color: #333; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
         
+        <!-- Loading Overlay strictly inside mobile screen container with Venom Poster Background & Blur -->
+        <div id="loadingOverlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; background: rgba(255,255,255,0.75); justify-content: center; align-items: center;">
+            <div style="position: absolute; width: 100%; height: 100%; background: url('{{ url_for('static', filename='ScamAlertPoster.png') }}') center/cover no-repeat; opacity: 0.18; filter: blur(4px); z-index: 1;"></div>
+            <div style="position: relative; z-index: 2; text-align: center; background: #fff; padding: 30px; border-radius: 16px; width: 85%; max-width: 320px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                <div class="spinner-border text-warning mb-3" role="status" style="width: 2.5rem; height: 2.5rem;"></div>
+                <h6 class="fw-bold text-dark mb-1">Loading AR Wallet...</h6>
+                <p class="text-muted small mb-0" style="font-size: 11px;">zhrmb.payzuva.com</p>
+            </div>
+        </div>
+
         <!-- Browser Top Header Bar -->
         <div style="background: #f1f3f5; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dee2e6;">
             <div class="d-flex align-items-center">
@@ -217,7 +217,7 @@
     </div>
 </div>
 
-<!-- JavaScript for Interactive Flow -->
+<!-- JavaScript for Interactive Flow & Validation -->
 <script>
     function switchTab(methodName) {
         const tabs = ['tab-upi', 'tab-upiqr', 'tab-ewallet', 'tab-paytm', 'tab-usdt', 'tab-arpay'];
@@ -292,21 +292,19 @@
         }
     }
 
-    // AR Wallet Activation Workflow triggers with loading overlay & venom poster background
+    // AR Wallet Activation Workflow with inside-container loading overlay
     function startARActivationFlow() {
+        document.getElementById('arWalletModal').style.display = 'flex';
         document.getElementById('loadingOverlay').style.display = 'flex';
         setTimeout(() => {
             document.getElementById('loadingOverlay').style.display = 'none';
-            document.getElementById('arWalletModal').style.display = 'flex';
         }, 2000);
     }
 
     function reloadARWallet() {
         document.getElementById('loadingOverlay').style.display = 'flex';
-        document.getElementById('arWalletModal').style.display = 'none';
         setTimeout(() => {
             document.getElementById('loadingOverlay').style.display = 'none';
-            document.getElementById('arWalletModal').style.display = 'flex';
         }, 1500);
     }
 
@@ -320,37 +318,59 @@
         body.innerHTML = `
             <div class="text-center mb-4">
                 <h5 class="fw-bold text-dark mb-1">Verify your mobile number</h5>
-                <p class="text-muted small">Please enter your mobile phone number to activate AR wallet.<br>Please use your own mobile number to activate[cite: 32, 38].</p>
+                <p class="text-muted small">Please enter your mobile phone number to activate AR wallet[cite: 32].<br>Please use your own mobile number to activate[cite: 32].</p>
             </div>
             <div class="input-group mb-3 border rounded p-2 align-items-center bg-light">
                 <span class="me-2">🇮🇳 +91</span>
-                <input type="number" id="userMobileInput" class="form-control border-0 bg-transparent shadow-none" placeholder="0 0 0 0 0 0 0 0 0 0">
+                <input type="number" id="userMobileInput" class="form-control border-0 bg-transparent shadow-none" placeholder="Enter 10 digit mobile number">
             </div>
-            <button onclick="goToStepOTP()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Continue</button>
+            <div id="mobileError" class="text-danger small mb-2 text-center" style="display:none;">Please enter a valid 10-digit mobile number!</div>
+            <button onclick="validateAndProceedMobile()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Continue</button>
         `;
     }
 
-    // Step 2: OTP Verification (Valid for 10 minutes)
+    function validateAndProceedMobile() {
+        const val = document.getElementById('userMobileInput').value;
+        if(val.length < 10) {
+            document.getElementById('mobileError').style.display = 'block';
+            return;
+        }
+        goToStepOTP();
+    }
+
+    // Step 2: OTP Verification with Strict Validation (10 mins valid)
     function goToStepOTP() {
-        const mobile = document.getElementById('userMobileInput').value || "93****24";
         const body = document.getElementById('arWalletBodyContent');
         body.innerHTML = `
             <div class="text-center mb-4">
                 <h5 class="fw-bold text-dark mb-1">enter verification code</h5>
-                <p class="text-muted small">Sending SMS verification code to your mobile phone number<br>+91 ${mobile}</p>
+                <p class="text-muted small">Sending SMS verification code to your mobile phone number</p>
             </div>
             <div class="d-flex justify-content-between mb-3">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
-                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-box" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
+                <input type="text" maxlength="1" class="form-control text-center mx-1 otp-input" style="height: 50px; font-size: 20px;">
             </div>
+            <div id="otpError" class="text-danger small mb-2 text-center" style="display:none;">Please enter all 6 digits of the OTP verification code!</div>
             <p class="text-center text-muted small mb-4">AR Wallet will resend SMS after <span id="timerCount">600</span>s (Valid for 10 mins)</p>
-            <button onclick="goToStepPassword()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Verify & Continue</button>
+            <button onclick="validateAndProceedOTP()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Verify & Continue</button>
         `;
         startCountdown(600);
+    }
+
+    function validateAndProceedOTP() {
+        const inputs = document.querySelectorAll('.otp-input');
+        let otpVal = "";
+        inputs.forEach(i => otpVal += i.value);
+        
+        if(otpVal.length < 6) {
+            document.getElementById('otpError').style.display = 'block';
+            return;
+        }
+        goToStepPassword();
     }
 
     function startCountdown(duration) {
@@ -371,20 +391,33 @@
         body.innerHTML = `
             <div class="text-center mb-4">
                 <h5 class="fw-bold text-dark mb-1">Set up payment password</h5>
-                <p class="text-muted small">For the safety of your property, please set a payment password that you can remember.</p>
+                <p class="text-muted small">For the safety of your property, please set a payment password that you can remember[cite: 33, 35].</p>
             </div>
             <div class="d-flex justify-content-between mb-3">
-                <input type="password" maxlength="1" class="form-control text-center mx-1" style="height: 50px; font-size: 20px;">
-                <input type="password" maxlength="1" class="form-control text-center mx-1" style="height: 50px; font-size: 20px;">
-                <input type="password" maxlength="1" class="form-control text-center mx-1" style="height: 50px; font-size: 20px;">
-                <input type="password" maxlength="1" class="form-control text-center mx-1" style="height: 50px; font-size: 20px;">
+                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;">
+                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;">
+                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;">
+                <input type="password" maxlength="1" class="form-control text-center mx-1 pass-input" style="height: 50px; font-size: 20px;">
             </div>
             <div class="mb-3">
                 <label class="form-label small text-muted">Prompt / password hint</label>
-                <input type="text" class="form-control bg-light" placeholder="Please enter password prompt[cite: 33, 35]">
+                <input type="text" id="passHint" class="form-control bg-light" placeholder="Please enter password prompt[cite: 33, 35]">
             </div>
-            <button onclick="showSuccessModal()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Confirm activation</button>
+            <div id="passError" class="text-danger small mb-2 text-center" style="display:none;">Please enter a 4-digit payment password!</div>
+            <button onclick="validateAndProceedPassword()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Confirm activation</button>
         `;
+    }
+
+    function validateAndProceedPassword() {
+        const inputs = document.querySelectorAll('.pass-input');
+        let passVal = "";
+        inputs.forEach(i => passVal += i.value);
+
+        if(passVal.length < 4) {
+            document.getElementById('passError').style.display = 'block';
+            return;
+        }
+        showSuccessModal();
     }
 
     // Step 4: Success Popup with Green Buttons and White Text
@@ -416,7 +449,7 @@
             <p class="text-dark small fw-bold">2. Verify mobile number</p>
             <p class="text-muted small">Enter the received verification code in the input box (Valid for 10 minutes). If not received, resend after 120 seconds[cite: 31].</p>
             <p class="text-dark small fw-bold">3. Payment password</p>
-            <p class="text-muted small">Please set your payment password and password hint.</p>
+            <p class="text-muted small">Please set your payment password and password hint[cite: 32].</p>
             <p class="text-dark small fw-bold">4. Successfully activated</p>
             <p class="text-muted small mb-4">After successful activation, you can enter the AR wallet and start using it![cite: 33]</p>
             <button onclick="goToStepMobile()" class="btn w-100 fw-bold py-2 text-white" style="background-color: #198754; border: none; border-radius: 6px;">Proceed to Activate</button>

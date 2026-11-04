@@ -1,1 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DmFirst - Home</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #051811;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-bottom: 80px;
+        }
 
+        /* Top Header */
+        .top-header {
+            background-color: #04120d;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-text {
+            color: #e5c158;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .balance-badge {
+            background-color: #0b3425;
+            border: 1px solid #1a573f;
+            border-radius: 20px;
+            padding: 4px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+        .balance-badge .amount {
+            color: #e5c158;
+            font-weight: bold;
+        }
+        .plus-btn {
+            background-color: #28a745;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            text-decoration: none;
+        }
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            color: #28a745;
+        }
+
+        /* Banners & Ticker */
+        .promo-banner {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 10px;
+            border: 1px solid #1a573f;
+        }
+        .ticker-bar {
+            background-color: #072318;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            color: #8fae9e;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 12px 0;
+        }
+
+        /* Game Categories */
+        .cat-btn {
+            background-color: #0a3022;
+            border: 1px solid #134632;
+            border-radius: 12px;
+            padding: 8px 4px;
+            text-align: center;
+            color: #8fae9e;
+            font-size: 0.75rem;
+            text-decoration: none;
+            display: block;
+        }
+        .cat-btn.active {
+            background: linear-gradient(180deg, #1aa368 0%, #0a4f32 100%);
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .cat-btn i {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Game Cards Grid */
+        .section-title {
+            color: #e5c158;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin: 15px 0 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .game-card {
+            background: #0d3b2a;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            border: 1px solid #1a573f;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .game-card:active {
+            transform: scale(0.95);
+        }
+        .game-card img {
+            width: 100%;
+            height: 95px;
+            object-fit: cover;
+        }
+        .game-card .title {
+            font-size: 0.7rem;
+            padding: 4px;
+            color: #ffffff;
+            font-weight: 600;
+            background: #072318;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* Bottom Nav Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #04120d;
+            border-top: 1px solid #134632;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding: 6px 0 8px 0;
+            z-index: 999;
+        }
+        .nav-item-custom {
+            text-align: center;
+            color: #6a8c7c;
+            text-decoration: none;
+            font-size: 0.7rem;
+            flex: 1;
+        }
+        .nav-item-custom.active {
+            color: #28a745;
+        }
+        .nav-item-custom i {
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* Center Spin Button (Get ₹500) */
+        .center-spin-btn {
+            position: relative;
+            top: -15px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .spin-wheel {
+            width: 52px;
+            height: 52px;
+            background: radial-gradient(circle, #e5c158 0%, #aa7c11 100%);
+            border-radius: 50%;
+            border: 3px solid #051811;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(229, 193, 88, 0.5);
+            margin: 0 auto;
+            color: #051811;
+            font-size: 1.4rem;
+        }
+        .spin-text {
+            color: #e5c158;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        /* Custom Fraud Alert Pop-up Modal */
+        .scam-modal .modal-content {
+            background-color: #051811;
+            border: 2px solid #e5c158;
+            border-radius: 15px;
+            color: #ffffff;
+        }
+        .scam-modal .modal-header {
+            background-color: #e5c158;
+            color: #051811;
+            font-weight: bold;
+            text-align: center;
+            justify-content: center;
+            border: none;
+            padding: 8px;
+        }
+        .scam-body {
+            max-height: 380px;
+            overflow-y: auto;
+            font-size: 0.8rem;
+            padding: 15px;
+        }
+        .warning-box {
+            background: #092c1e;
+            border: 1px solid #1aa368;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .btn-confirm {
+            background: linear-gradient(180deg, #f3d478 0%, #c99824 100%);
+            color: #051811;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px;
+            width: 100%;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <div class="top-header">
+        <div class="logo-text">
+            <i class="fa-solid fa-crown"></i> DmFirst
+        </div>
+        <div class="balance-badge">
+            <span>Balance</span>
+            <span class="amount" id="userBalance">₹0.00</span>
+            <a href="#" class="plus-btn" onclick="openDeposit()"><i class="fa-solid fa-plus"></i></a>
+        </div>
+        <div class="header-actions">
+            <i class="fa-regular fa-comment-dots fs-5" onclick="alert('Support Chat Opened')"></i>
+            <i class="fa-solid fa-download fs-5" onclick="alert('Downloading APK...')"></i>
+        </div>
+    </div>
+
+    <div class="container px-3">
+        <!-- Main Top Banner -->
+        <div class="promo-banner">
+            <img src="https://via.placeholder.com/400x160/0a4f32/ffffff?text=MOST+POPULAR+GAME+SITE+INDIA" class="img-fluid w-100" alt="Banner">
+        </div>
+
+        <!-- Announcement Ticker -->
+        <div class="ticker-bar">
+            <span><i class="fa-solid fa-volume-high text-warning me-2"></i> Please be sure to always use our official web...</span>
+            <span class="text-success" style="cursor: pointer;" onclick="alert('Notice Details')">Detail &gt;</span>
+        </div>
+
+        <!-- Game Categories Bar -->
+        <div class="row g-2 mb-3">
+            <div class="col"><a href="#" class="cat-btn active"><i class="fa-solid fa-fire"></i>Popular</a></div>
+            <div class="col"><a href="#" class="cat-btn"><i class="fa-solid fa-bowling-ball"></i>Lottery</a></div>
+            <div class="col"><a href="#" class="cat-btn"><i class="fa-solid fa-gamepad"></i>Mini games</a></div>
+            <div class="col"><a href="#" class="cat-btn"><i class="fa-solid fa-layer-group"></i>Slots</a></div>
+            <div class="col"><a href="#" class="cat-btn"><i class="fa-solid fa-fish"></i>Fishing</a></div>
+        </div>
+
+        <!-- Platform Recommendation Games -->
+        <div class="section-title">Platform recommendation</div>
+        <div class="row g-2">
+            <div class="col-3">
+                <div class="game-card" onclick="playGame('Aviator')">
+                    <img src="https://via.placeholder.com/100/900000/ffffff?text=Aviator" alt="Aviator">
+                    <div class="title">AVIATOR</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="game-card" onclick="playGame('Vortex')">
+                    <img src="https://via.placeholder.com/100/4a0080/ffffff?text=Vortex" alt="Vortex">
+                    <div class="title">VORTEX</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="game-card" onclick="playGame('Chicken Road 1 Bonus')">
+                    <img src="https://via.placeholder.com/100/804000/ffffff?text=Chicken" alt="Chicken Road">
+                    <div class="title">CHICKEN ROAD</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="game-card" onclick="playGame('PUBG')">
+                    <img src="https://via.placeholder.com/100/333333/ffffff?text=PUBG" alt="PUBG">
+                    <div class="title">PUBG</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Games Section -->
+        <div class="section-title">
+            <span>Popular</span>
+            <span class="text-muted fs-7" style="cursor: pointer;" onclick="alert('All games list')">View All &gt;</span>
+        </div>
+        <div class="row g-2">
+            <div class="col-3">
+                <div class="game-card" onclick="playGame('Fortune Garuda 500')">
+                    <img src="https://via.placeholder.com/100/b8860b/ffffff?text=Garuda" alt="Garuda">
+                    <div class="title">FORTUNE GARUDA</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="game-card" onclick="playGame('Money Coming')">
+                    <img src="https://via.placeholder.com/100/006400/ffffff?text=Money" alt="Money">
+                    <div class="title">MONEY COMING</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="game-card" onclick="playGame('Lucky Jaguar 500')">
+                    <img src="https://via.placeholder.com/100/8b0000/ffffff?text=Jaguar" alt="Jaguar">
+                    <div class="title">LUCKY JAGUAR</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="game-card" onclick="playGame('Fortune Gems 2')">
+                    <img src="https://via.placeholder.com/100/4b0082/ffffff?text=Gems+2" alt="Gems 2">
+                    <div class="title">FORTUNE GEMS 2</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Footer Navigation Bar -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item-custom active">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+        <a href="#" class="nav-item-custom" onclick="alert('Activity Tab Clicked')">
+            <i class="fa-solid fa-gift"></i>
+            Activity
+        </a>
+        
+        <!-- Center Spin Wheel Button (Get ₹500) -->
+        <a href="#" class="center-spin-btn" onclick="alert('Spin Wheel Opened! You can win up to ₹500')">
+            <div class="spin-wheel">
+                <i class="fa-solid fa-dharmachakra"></i>
+            </div>
+            <div class="spin-text">Get ₹500</div>
+        </a>
+
+        <a href="#" class="nav-item-custom" onclick="alert('Promotion Tab Clicked')">
+            <i class="fa-solid fa-users"></i>
+            Promotion
+        </a>
+        <a href="#" class="nav-item-custom" onclick="alert('Account Tab Clicked')">
+            <i class="fa-solid fa-user"></i>
+            Account
+        </a>
+    </div>
+
+    <!-- Automatic Welcome Fraud Warning Popup Modal -->
+    <div class="modal fade scam-modal" id="welcomeModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title mb-0"><i class="fa-solid fa-triangle-exclamation text-danger me-1"></i> BEWARE OF FRAUD ATTEMPTS <i class="fa-solid fa-triangle-exclamation text-danger ms-1"></i></h6>
+                </div>
+                <div class="modal-body scam-body">
+                    <div class="text-center mb-3">
+                        <h5 class="text-warning fw-bold"><i class="fa-solid fa-shield-halved"></i> DmFirst SCAM ALERT</h5>
+                        <p class="text-muted small">AVOID BEING SCAMMED</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h6 class="text-success"><i class="fa-solid fa-lock"></i> WITHDRAWAL SECURITY WARNING</h6>
+                        <ol class="ps-3 mb-0">
+                            <li class="mb-1">Our platform will <b>NEVER</b> ask for an OTP to receive or process UPI withdrawals.</li>
+                            <li class="mb-1"><b>Never share your OTP</b> with anyone, including customer service agents or official representatives.</li>
+                            <li>If you receive a suspicious call or message, ignore it and report immediately.</li>
+                        </ol>
+                    </div>
+
+                    <div class="warning-box border-danger">
+                        <h6 class="text-danger"><i class="fa-solid fa-circle-exclamation"></i> BEWARE OF STRANGERS MESSAGING OR CALLING</h6>
+                        <p class="mb-0 text-muted">Please stay alert! Our team will never contact you via private message for money transfers.</p>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-2">
+                    <button type="button" class="btn btn-confirm" data-bs-dismiss="modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Automatic Open Pop-up Notice on Page Load
+        document.addEventListener("DOMContentLoaded", function() {
+            var myModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+            myModal.show();
+        });
+
+        // Dummy Click Actions for Buttons
+        function openDeposit() {
+            alert("Deposit Window: Directing to Add Money Page");
+        }
+
+        function playGame(gameName) {
+            alert("Starting Game: " + gameName);
+        }
+    </script>
+</body>
+</html>

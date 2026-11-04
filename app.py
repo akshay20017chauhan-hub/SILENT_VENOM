@@ -187,7 +187,8 @@ def logout():
 @login_required
 def deposit():
     return render_template('deposit.html')
-    @app.route('/')
+
+@app.route('/')
 def home():
     return render_template('home.html')
 

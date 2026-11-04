@@ -113,6 +113,21 @@
     .sv-confirm-btn:active {
       transform: scale(0.98);
     }
+      /* Real Phone Fix: Full width on small screens */
+        @media (max-width: 576px) {
+            body {
+                align-items: flex-start !important;
+            }
+            .mobile-frame {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 100vh !important;
+                max-height: none !important;
+                border-radius: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+        }
     </style>
 </head>
 <body>

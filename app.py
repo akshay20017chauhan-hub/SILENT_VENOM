@@ -34,7 +34,6 @@ def load_user(user_id):
 def init_db():
     with app.app_context():
         db.create_all()
-        # default admin as 'admin'
         admin = User.query.filter_by(phone='admin').first()
         if not admin:
             admin = User(
@@ -47,7 +46,6 @@ def init_db():
             db.session.add(admin)
             db.session.commit()
 
-# Initialize database on startup so Gunicorn creates tables
 init_db()
 
 @app.route('/')
@@ -92,7 +90,7 @@ def register():
         flash('Registration successful! You can now log in.', 'success')
         return redirect(url_for('login'))
 
-    inv_code = request.args.get('invitationCode', '326503098027')
+    inv_code = request.args.get('invitationCode', '326503898027')
     return render_template('register.html', invite_code=inv_code)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -139,6 +137,7 @@ def forgot_password():
 
         user.set_password(new_password)
         db.session.commit()
+
         flash('Password reset successfully! You can now log in with the new password.', 'success')
         return redirect(url_for('login'))
 

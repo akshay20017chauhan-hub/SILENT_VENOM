@@ -280,3 +280,16 @@ body {
 .deposit-container button, .deposit-buttons button, .btn-group-custom a {
     width: 100% !important;
 }
+
+@media screen and (max-width: 768px) {
+    .app-container, .mobile-frame {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        max-height: none !important;
+        border-radius: 0 !important;
+        border: none !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+    }
+}

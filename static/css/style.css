@@ -26,7 +26,7 @@ body {
 /* Strict Mobile Portrait Container */
 .app-container {
     width: 100%;
-    max-width: 414px;
+    max-width: 100% !important;
     height: 100vh;
     max-height: 896px;
     background-color: var(--bg-dark);
@@ -40,9 +40,10 @@ body {
 
 @media (min-width: 576px) {
     .app-container {
+        max-width: 450px !important;
         height: 844px;
         border-radius: 24px;
-        margin: 20px 0;
+        margin: 20px auto;
         border: 2px solid #222;
     }
 }

@@ -266,3 +266,16 @@ body {
     border-radius: 6px;
     margin-bottom: 12px;
 }
+
+/* Deposit Page Buttons Fix */
+.deposit-container, .deposit-buttons, .btn-group-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.deposit-container button, .deposit-buttons button, .btn-group-custom a {
+    width: 100% !important;
+}

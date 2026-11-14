@@ -630,3 +630,60 @@ body {
     border: 3px solid #0b261b;
     box-shadow: 0 3px 10px rgba(245, 197, 66, 0.5);
 }
+
+/* Single Line Compact Header */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #0a2218;
+    border-bottom: 1px solid #143d2c;
+}
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.logo-badge {
+    background: linear-gradient(135deg, #f5c542, #d49415);
+    color: #071912;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 900;
+    font-size: 14px;
+}
+.brand-text-group {
+    display: flex;
+    flex-direction: column;
+}
+.brand-name {
+    font-weight: 800;
+    font-size: 14px;
+    color: #f5c542;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+.brand-tagline {
+    font-size: 10px;
+    color: #8ab3a1;
+    font-weight: 500;
+}
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-deposit-top {
+    background: linear-gradient(90deg, #1db954, #148a3c);
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.lang-badge {
+    font-size: 11px;
+    color: #a3c2b5;
+}

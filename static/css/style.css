@@ -344,3 +344,289 @@ body {
     }
 }
 </style>
+
+/* ================= HOME DASHBOARD LAYOUT ================= */
+.app-container, .mobile-frame {
+    background-color: #071912;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 125px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Top Header */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #0a2218;
+    border-bottom: 1px solid #143d2c;
+}
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #f5c542;
+}
+.logo-badge {
+    background: linear-gradient(135deg, #f5c542, #d49415);
+    color: #071912;
+    padding: 3px 7px;
+    border-radius: 6px;
+    font-weight: 900;
+}
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-deposit-top {
+    background: linear-gradient(90deg, #1db954, #148a3c);
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+.lang-badge {
+    font-size: 12px;
+    color: #a3c2b5;
+}
+
+/* Promo Banner */
+.promo-banner {
+    margin: 12px 15px;
+    padding: 18px 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #113b29 0%, #1c5e3f 50%, #0d2b1e 100%);
+    border: 1px solid #287a53;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+.banner-tag {
+    background: #f5c542;
+    color: #071912;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+.promo-banner h2 {
+    margin: 8px 0 4px;
+    font-size: 20px;
+    color: #ffe07d;
+    letter-spacing: 0.5px;
+}
+.promo-banner p {
+    margin: 0 0 12px;
+    font-size: 12px;
+    color: #cbe3d8;
+}
+.btn-claim {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffd147, #f0a500);
+    color: #1a1200;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* Notice Bar */
+.notice-bar {
+    margin: 0 15px 14px;
+    padding: 7px 12px;
+    background: #0d2b1f;
+    border: 1px solid #184734;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #b7d6c8;
+}
+.notice-detail {
+    color: #f5c542;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin-bottom: 18px;
+    gap: 6px;
+}
+.cat-item {
+    flex: 1;
+    background: #0d2b1f;
+    border: 1px solid #174532;
+    border-radius: 12px;
+    padding: 8px 4px;
+    text-align: center;
+    font-size: 11px;
+    color: #9ec2b2;
+    cursor: pointer;
+}
+.cat-item.active {
+    background: linear-gradient(180deg, #1b6b46, #0f3d28);
+    border-color: #2ecc71;
+    color: #ffffff;
+    font-weight: 600;
+}
+.cat-icon {
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+
+/* Games Section */
+.games-section {
+    padding: 0 15px;
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.section-header h3 {
+    margin: 0;
+    font-size: 15px;
+    color: #ffffff;
+}
+.view-all {
+    font-size: 12px;
+    color: #8ab3a1;
+}
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.game-card {
+    position: relative;
+    border-radius: 12px;
+    padding: 14px 8px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    transition: transform 0.15s ease;
+}
+.game-card:active {
+    transform: scale(0.96);
+}
+.game-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #ffd147;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+.game-art {
+    font-size: 32px;
+    margin: 6px 0;
+}
+.game-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* Game Card Custom Gradients */
+.card-ludo { background: linear-gradient(145deg, #d9383a, #7a1618); }
+.card-rummy { background: linear-gradient(145deg, #1b7a43, #0b3b1f); }
+.card-racing { background: linear-gradient(145deg, #1e62b5, #0d2c54); }
+.card-cross { background: linear-gradient(145deg, #c77d16, #663d05); }
+.card-colour { background: linear-gradient(145deg, #7b2cbf, #3c096c); }
+
+/* Horizontal Floating Buttons (Bottom ke upar horizontal line mein) */
+.floating-horizontal-bar {
+    position: sticky;
+    bottom: 68px;
+    margin: 18px 15px 0;
+    padding: 8px 12px;
+    background: rgba(13, 43, 31, 0.92);
+    backdrop-filter: blur(6px);
+    border: 1px solid #236348;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 90;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+.float-pill {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #f5c542;
+    background: linear-gradient(135deg, #194d37, #0c291d);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Bottom Navigation Bar */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 450px;
+    height: 60px;
+    background: #0b261b;
+    border-top: 1px solid #1a4d38;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+}
+.nav-item {
+    text-decoration: none;
+    color: #88b09f;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.nav-item.active {
+    color: #2ecc71;
+    font-weight: 700;
+}
+.nav-icon {
+    font-size: 18px;
+}
+.nav-center {
+    position: relative;
+    top: -12px;
+}
+.center-coin {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd147, #e68a00);
+    color: #1a1200;
+    font-weight: 900;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #0b261b;
+    box-shadow: 0 3px 10px rgba(245, 197, 66, 0.5);
+}

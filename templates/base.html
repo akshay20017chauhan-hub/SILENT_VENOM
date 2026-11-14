@@ -16,19 +16,9 @@
     <body>
 
     <div class="app-container">
-        <!-- Header -->
-        <header class="app-header">
-            <a href="javascript:history.back()" class="back-btn"><i class="bi bi-chevron-left"></i></a>
-            <div class="brand-logo">
-                <i class="bi bi-shield-lock-fill"></i>
-                SILENT VENOM
-            </div>
-            <div class="lang-selector">
-                <i class="bi bi-globe"></i> EN
-            </div>
-        </header>
+        
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
+       {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <div class="px-3 pt-2">
                     {% for category, message in messages %}

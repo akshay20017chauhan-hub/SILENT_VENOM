@@ -656,11 +656,12 @@ body {
     overflow-x: auto;
     gap: 8px;
     padding: 10px 12px;
-    background: #071912;
+    background: #071912 !important;
     position: sticky;
     top: 0;
-    z-index: 100;
-    scrollbar-width: none; /* Hide scrollbar for clean look */
+    z-index: 999 !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    scrollbar-width: none;
 }
 .category-nav-bar::-webkit-scrollbar {
     display: none;

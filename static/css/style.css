@@ -649,3 +649,98 @@ body {
     font-size: 11px;
     color: #a3c2b5;
 }
+
+/* Category Navigation Bar */
+.category-nav-bar {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #071912;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    scrollbar-width: none; /* Hide scrollbar for clean look */
+}
+.category-nav-bar::-webkit-scrollbar {
+    display: none;
+}
+.cat-pill {
+    background: #0f2e21;
+    border: 1px solid #1c4d37;
+    color: #8ab3a1;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+.cat-pill.active, .cat-pill:hover {
+    background: linear-gradient(135deg, #f5c542, #d49415);
+    color: #071912;
+    border-color: #f5c542;
+}
+
+/* Game Category Blocks */
+.game-category-block {
+    padding: 15px 12px;
+    scroll-margin-top: 60px; /* Offset for sticky nav */
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.section-header h3 {
+    font-size: 16px;
+    color: #f5c542;
+    font-weight: 700;
+}
+.view-all {
+    font-size: 12px;
+    color: #8ab3a1;
+    text-decoration: none;
+}
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.game-card {
+    background: #0f2e21;
+    border: 1px solid #143d2c;
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+.game-card span {
+    font-size: 10px;
+    color: #fff;
+    font-weight: 600;
+    display: block;
+    margin-top: 6px;
+}
+.game-icon-box {
+    font-size: 24px;
+    color: #f5c542;
+}
+.game-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 8px;
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-weight: 800;
+}
+.game-badge.hot { background: #ff4d4d; color: #fff; }
+.game-badge.live { background: #1db954; color: #fff; }
+.game-badge.new { background: #3b82f6; color: #fff; }

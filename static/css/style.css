@@ -745,3 +745,75 @@ body {
 .game-badge.hot { background: #ff4d4d; color: #fff; }
 .game-badge.live { background: #1db954; color: #fff; }
 .game-badge.new { background: #3b82f6; color: #fff; }
+
+/* Notification Page Styling */
+.notification-page-wrapper {
+    background: #050e0a;
+    min-height: 100vh;
+    color: #fff;
+    padding-bottom: 40px;
+}
+.sub-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #071912;
+    padding: 14px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #143d2c;
+}
+.sub-page-header h2 {
+    font-size: 16px;
+    color: #f5c542;
+    font-weight: 600;
+    margin: 0;
+}
+.back-btn {
+    color: #f5c542;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.header-placeholder {
+    width: 18px; /* Balances the header center alignment */
+}
+.notification-container {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.notif-card {
+    background: #0a2218;
+    border: 1px solid #14442f;
+    border-radius: 10px;
+    padding: 14px;
+}
+.notif-title {
+    color: #f5c542;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.notif-body {
+    color: #b0c4bc;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+.notif-time {
+    color: #6b8c7e;
+    font-size: 10px;
+}
+.notif-footer-text {
+    text-align: center;
+    color: #6b8c7e;
+    font-size: 12px;
+    margin-top: 20px;
+}

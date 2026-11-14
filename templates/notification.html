@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Notification - SILENT VENOM{% endblock %}
+
+{% block content %}
+<div class="notification-page-wrapper">
+    <!-- Top Header with Back Button -->
+    <header class="sub-page-header">
+        <a href="{{ url_for('dashboard') }}" class="back-btn">
+            <i class="bi bi-chevron-left"></i>
+        </a>
+        <h2>Notification</h2>
+        <div class="header-placeholder"></div>
+    </header>
+
+    <!-- Notification Cards List -->
+    <div class="notification-container">
+        
+        <div class="notif-card">
+            <div class="notif-title">
+                <i class="bi bi-megaphone-fill"></i> Welcome To SILENT VENOM!
+            </div>
+            <div class="notif-body">
+                Welcome to the SILENT VENOM! Greetings, Gamers and Enthusiasts! We have a variety of games, promo, bonus, luxury gold awards, and a user-friendly interface dedicated to providing you with an engaging and entertaining experience. Register now and win.
+            </div>
+            <div class="notif-time">2026-11-14 19:11:44</div>
+        </div>
+
+        <div class="notif-card">
+            <div class="notif-title">
+                <i class="bi bi-megaphone-fill"></i> Avoid Scammer And Phising Link
+            </div>
+            <div class="notif-body">
+                Please be sure to always use our official website for playing the games. Please always check our official link to access our website and avoid scammers and phishing links.
+            </div>
+            <div class="notif-time">2026-11-14 16:26:16</div>
+        </div>
+
+        <div class="notif-footer-text">No more</div>
+    </div>
+</div>
+{% endblock %}

@@ -12,3 +12,11 @@ function togglePasswordVisibility(inputId, iconId) {
         icon.classList.add("bi-eye-slash");
     }
 }
+function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    document.querySelectorAll('.cat-pill').forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+}

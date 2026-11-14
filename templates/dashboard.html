@@ -33,74 +33,179 @@
     <span class="notice-detail">Detail &gt;</span>
 </div>
 
-<!-- Category Tabs -->
-<div class="category-tabs">
-    <div class="cat-item active">
-        <div class="cat-icon">🔥</div>
-        <span>Popular</span>
+<!-- Sticky Category Navigation Bar -->
+    <div class="category-nav-bar">
+        <button class="cat-pill active" onclick="scrollToSection('popular-section')">
+            <i class="bi bi-fire"></i> Popular
+        </button>
+        <button class="cat-pill" onclick="scrollToSection('lottery-section')">
+            <i class="bi bi-trophy"></i> Lottery
+        </button>
+        <button class="cat-pill" onclick="scrollToSection('minigames-section')">
+            <i class="bi bi-controller"></i> Mini games
+        </button>
+        <button class="cat-pill" onclick="scrollToSection('slots-section')">
+            <i class="bi bi-cpu"></i> Slots
+        </button>
+        <button class="cat-pill" onclick="scrollToSection('fishing-section')">
+            <i class="bi bi-water"></i> Fishing
+        </button>
+        <button class="cat-pill" onclick="scrollToSection('sports-section')">
+            <i class="bi bi-dribbble"></i> Sports
+        </button>
+        <button class="cat-pill" onclick="scrollToSection('casino-section')">
+            <i class="bi bi-suit-spade"></i> Casino
+        </button>
     </div>
-    <div class="cat-item">
-        <div class="cat-icon">🎱</div>
-        <span>Lottery</span>
-    </div>
-    <div class="cat-item">
-        <div class="cat-icon">🎮</div>
-        <span>Mini games</span>
-    </div>
-    <div class="cat-item">
-        <div class="cat-icon">🎰</div>
-        <span>Slots</span>
-    </div>
-    <div class="cat-item">
-        <div class="cat-icon">🐠</div>
-        <span>Fishing</span>
-    </div>
-</div>
+<!-- Games Container Sections -->
+    <div class="game-sections-container">
 
-<!-- Main Games Section (Tere 5 Main Games) -->
-<section class="games-section">
-    <div class="section-header">
-        <h3>Platform Recommendation</h3>
-        <span class="view-all">View All &gt;</span>
-    </div>
-    
-    <div class="games-grid">
-        <!-- Game 1: Ludo -->
-        <div class="game-card card-ludo" onclick="openGame('ludo')">
-            <div class="game-badge">HOT</div>
-            <div class="game-art">🎲</div>
-            <div class="game-title">LUDO</div>
+        <!-- Popular Section -->
+        <div id="popular-section" class="game-category-block">
+            <div class="section-header">
+                <h3>Popular</h3>
+                <a href="#" class="view-all">View All &gt;</a>
+            </div>
+            <div class="game-grid">
+                <div class="game-card" onclick="openGame('ludo')">
+                    <div class="game-badge hot">HOT</div>
+                    <div class="game-icon-box"><i class="bi bi-dice-5-fill"></i></div>
+                    <span>LUDO</span>
+                </div>
+                <div class="game-card" onclick="openGame('rummy')">
+                    <div class="game-badge live">LIVE</div>
+                    <div class="game-icon-box"><i class="bi bi-suit-club-fill"></i></div>
+                    <span>RUMMY</span>
+                </div>
+                <div class="game-card" onclick="openGame('car-racing')">
+                    <div class="game-badge new">NEW</div>
+                    <div class="game-icon-box"><i class="bi bi-car-front-fill"></i></div>
+                    <span>CAR RACING</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Game 2: Rummy -->
-        <div class="game-card card-rummy" onclick="openGame('rummy')">
-            <div class="game-badge">LIVE</div>
-            <div class="game-art">🃏</div>
-            <div class="game-title">RUMMY</div>
+        <!-- Lottery Section -->
+        <div id="lottery-section" class="game-category-block">
+            <div class="section-header">
+                <h3>Lottery</h3>
+                <a href="#" class="view-all">View All &gt;</a>
+            </div>
+            <div class="game-grid">
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-circle-fill"></i></div>
+                    <span>WINGO</span>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-hexagon-fill"></i></div>
+                    <span>K3</span>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-square-fill"></i></div>
+                    <span>5D</span>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-star-fill"></i></div>
+                    <span>Trx Wingo</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Game 3: Car Racing -->
-        <div class="game-card card-racing" onclick="openGame('car-racing')">
-            <div class="game-badge">NEW</div>
-            <div class="game-art">🏎️</div>
-            <div class="game-title">CAR RACING</div>
+        <!-- Mini Games Section -->
+        <div id="minigames-section" class="game-category-block">
+            <div class="section-header">
+                <h3>Mini games</h3>
+                <a href="#" class="view-all">View All &gt;</a>
+            </div>
+            <div class="game-grid">
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-airplane-fill"></i></div>
+                    <span>Aviator</span>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-gem"></i></div>
+                    <span>Mines</span>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                    <span>Limbo</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Game 4: Cross Game -->
-        <div class="game-card card-cross" onclick="openGame('cross-game')">
-            <div class="game-badge">2X</div>
-            <div class="game-art">🐔</div>
-            <div class="game-title">CROSS GAME</div>
+        <!-- Slots Section -->
+        <div id="slots-section" class="game-category-block">
+            <div class="section-header">
+                <h3>Slots</h3>
+                <a href="#" class="view-all">View All &gt;</a>
+            </div>
+            <div class="game-grid">
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-coin"></i></div>
+                    <span>Fortune Gems</span>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-cash-stack"></i></div>
+                    <span>Super Ace</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Game 5: Colour Trading -->
-        <div class="game-card card-colour" onclick="openGame('colour-trading')">
-            <div class="game-badge">FAST</div>
-            <div class="game-art">🎨</div>
-            <div class="game-title">COLOUR TRADING</div>
+        <!-- Fishing Section -->
+        <div id="fishing-section" class="game-category-block">
+            <div class="section-header">
+                <h3>Fishing</h3>
+                <a href="#" class="view-all">View All &gt;</a>
+            </div>
+            <div class="game-grid">
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-water"></i></div>
+                    <span>Royal Fishing</span>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-shield-shaded"></i></div>
+                    <span>Dragon Hunter</span>
+                </div>
+            </div>
         </div>
+
+        <!-- Sports Section -->
+        <div id="sports-section" class="game-category-block">
+            <div class="section-header">
+                <h3>Sports</h3>
+                <a href="#" class="view-all">View All &gt;</a>
+            </div>
+            <div class="game-grid">
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-trophy-fill"></i></div>
+                    <span>SABA Sports</span>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-activity"></i></div>
+                    <span>CRICKET Pro</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casino Section -->
+        <div id="casino-section" class="game-category-block">
+            <div class="section-header">
+                <h3>Casino</h3>
+                <a href="#" class="view-all">View All &gt;</a>
+            </div>
+            <div class="game-grid">
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-people-fill"></i></div>
+                    <span>Evolution Live</span>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon-box"><i class="bi bi-heart-fill"></i></div>
+                    <span>Sexy Casino</span>
+                </div>
+            </div>
+        </div>
+
     </div>
-</section>
 
 <!-- Horizontal Floating Quick Buttons (Niche ki taraf horizontal row mein) -->
 <div class="floating-horizontal-bar">

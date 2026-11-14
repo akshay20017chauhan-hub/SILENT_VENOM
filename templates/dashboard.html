@@ -1,17 +1,136 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container py-4 text-center text-white">
-    <div class="card bg-dark border-success p-4 shadow">
-        <h2>Welcome to Dashboard</h2>
-        <p class="text-muted">UID: {{ current_user.id }} | Phone: {{ current_user.phone }}</p>
-        
-        <div class="mt-4">
-            <a href="{{ url_for('deposit') }}" class="btn btn-success btn-lg w-100 mb-3">Deposit Now</a>
-            <a href="{{ url_for('logout') }}" class="btn btn-outline-danger w-100">Logout</a>
-        </div>
+<!-- Top App Header -->
+<header class="top-header">
+    <div class="brand-logo">
+        <span class="logo-badge">SV</span>
+        <span class="brand-name">SILENT VENOM</span>
+    </div>
+    <div class="header-actions">
+        <a href="/deposit" class="btn-deposit-top">Deposit</a>
+        <div class="lang-badge">🌐 EN</div>
+    </div>
+</header>
+
+<!-- Main Promotional Banner -->
+<div class="promo-banner">
+    <div class="banner-content">
+        <span class="banner-tag">DAILY CHECK-IN</span>
+        <h2>BONUS & RECHARGE</h2>
+        <p>Instant rewards on every game</p>
+        <a href="/deposit" class="btn-claim">CLAIM THE REWARD &gt;</a>
     </div>
 </div>
+
+<!-- Scrolling Notice Bar -->
+<div class="notice-bar">
+    <span class="notice-icon">🔊</span>
+    <marquee scrollamount="4">Welcome to SILENT VENOM! Play Ludo, Rummy, Car Racing, Cross Game & Colour Trading with instant withdrawals.</marquee>
+    <span class="notice-detail">Detail &gt;</span>
+</div>
+
+<!-- Category Tabs -->
+<div class="category-tabs">
+    <div class="cat-item active">
+        <div class="cat-icon">🔥</div>
+        <span>Popular</span>
+    </div>
+    <div class="cat-item">
+        <div class="cat-icon">🎱</div>
+        <span>Lottery</span>
+    </div>
+    <div class="cat-item">
+        <div class="cat-icon">🎮</div>
+        <span>Mini games</span>
+    </div>
+    <div class="cat-item">
+        <div class="cat-icon">🎰</div>
+        <span>Slots</span>
+    </div>
+    <div class="cat-item">
+        <div class="cat-icon">🐠</div>
+        <span>Fishing</span>
+    </div>
+</div>
+
+<!-- Main Games Section (Tere 5 Main Games) -->
+<section class="games-section">
+    <div class="section-header">
+        <h3>Platform Recommendation</h3>
+        <span class="view-all">View All &gt;</span>
+    </div>
+    
+    <div class="games-grid">
+        <!-- Game 1: Ludo -->
+        <div class="game-card card-ludo" onclick="openGame('ludo')">
+            <div class="game-badge">HOT</div>
+            <div class="game-art">🎲</div>
+            <div class="game-title">LUDO</div>
+        </div>
+
+        <!-- Game 2: Rummy -->
+        <div class="game-card card-rummy" onclick="openGame('rummy')">
+            <div class="game-badge">LIVE</div>
+            <div class="game-art">🃏</div>
+            <div class="game-title">RUMMY</div>
+        </div>
+
+        <!-- Game 3: Car Racing -->
+        <div class="game-card card-racing" onclick="openGame('car-racing')">
+            <div class="game-badge">NEW</div>
+            <div class="game-art">🏎️</div>
+            <div class="game-title">CAR RACING</div>
+        </div>
+
+        <!-- Game 4: Cross Game -->
+        <div class="game-card card-cross" onclick="openGame('cross-game')">
+            <div class="game-badge">2X</div>
+            <div class="game-art">🐔</div>
+            <div class="game-title">CROSS GAME</div>
+        </div>
+
+        <!-- Game 5: Colour Trading -->
+        <div class="game-card card-colour" onclick="openGame('colour-trading')">
+            <div class="game-badge">FAST</div>
+            <div class="game-art">🎨</div>
+            <div class="game-title">COLOUR TRADING</div>
+        </div>
+    </div>
+</section>
+
+<!-- Horizontal Floating Quick Buttons (Niche ki taraf horizontal row mein) -->
+<div class="floating-horizontal-bar">
+    <button class="float-pill" title="Daily Spin">🎡</button>
+    <button class="float-pill" title="Lucky Wheel">🎯</button>
+    <button class="float-pill" title="VIP Bonus">👑</button>
+    <button class="float-pill" title="Gift Box">🎁</button>
+    <button class="float-pill" title="24/7 Support">🤖</button>
+</div>
+
+<!-- Fixed Bottom Navigation Bar -->
+<nav class="bottom-nav">
+    <a href="/dashboard" class="nav-item active">
+        <span class="nav-icon">🏠</span>
+        <span>Home</span>
+    </a>
+    <a href="#" class="nav-item">
+        <span class="nav-icon">🎁</span>
+        <span>Activity</span>
+    </a>
+    <a href="/deposit" class="nav-item nav-center">
+        <div class="center-coin">₹500</div>
+        <span>Get 500</span>
+    </a>
+    <a href="#" class="nav-item">
+        <span class="nav-icon">💎</span>
+        <span>Promotion</span>
+    </a>
+    <a href="/logout" class="nav-item">
+        <span class="nav-icon">👤</span>
+        <span>Account</span>
+    </a>
+</nav>
 
 <!-- ================= MODAL OVERLAYS ================= -->
 

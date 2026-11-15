@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Play Ludo - SILENT VENOM{% endblock %}
+
+{% block content %}
+<div style="background: #050e0a; height: 100vh; display: flex; flex-direction: column; overflow: hidden;">
+    
+    <!-- Top Header with Back Button -->
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #071912; border-bottom: 1px solid #143d2c;">
+        <a href="{{ url_for('dashboard') }}" style="color: #f5c542; font-size: 16px; text-decoration: none; font-weight: bold;">
+            &#8592; Back
+        </a>
+        <span style="color: #f5c542; font-size: 16px; font-weight: bold;">LUDO KING</span>
+        <span style="width: 40px;"></span>
+    </div>
+
+    <!-- Live Game Iframe -->
+    <iframe 
+        src="https://html5.gamedistribution.com/46d75e16addf42a3a701fcb31a/" 
+        style="width: 100%; flex: 1; border: none;" 
+        allowfullscreen>
+    </iframe>
+
+</div>
+{% endblock %}

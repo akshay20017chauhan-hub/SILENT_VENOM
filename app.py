@@ -31,6 +31,10 @@ class User(UserMixin, db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+@app.route('/play/ludo')
+def play_ludo():
+    return render_template('games/ludo.html')
+
 def init_db():
     with app.app_context():
         db.create_all()

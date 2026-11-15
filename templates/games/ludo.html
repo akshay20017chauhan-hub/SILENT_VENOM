@@ -27,7 +27,7 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
-    gap: 12px;
+    gap: 10px;
   }
   #mode-screen {
     background: #071912;
@@ -52,10 +52,15 @@
   }
   .mode-btn:active { transform: scale(0.97); }
 
-  /* 15x15 Classic Ludo Board */
+  /* Board Wrapper with Corner Dice Dock */
+  .board-outer {
+    position: relative;
+    padding: 35px; /* Space for corner dice */
+  }
+
   .board-container {
-    width: min(94vw, 440px);
-    height: min(94vw, 440px);
+    width: min(90vw, 400px);
+    height: min(90vw, 400px);
     background: #fff;
     border: 4px solid #1e293b;
     border-radius: 6px;
@@ -63,7 +68,6 @@
     grid-template-columns: repeat(15, 1fr);
     grid-template-rows: repeat(15, 1fr);
     box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-    position: relative;
   }
   .cell {
     border: 0.5px solid #cbd5e1;
@@ -124,14 +128,13 @@
     text-shadow: 0 1px 2px #000;
   }
 
-  /* Colored Track Cells */
   .bg-red { background: #dc2626 !important; color: #fff; }
   .bg-green { background: #16a34a !important; color: #fff; }
   .bg-yellow { background: #eab308 !important; color: #fff; }
   .bg-blue { background: #2563eb !important; color: #fff; }
-  .star-cell::after { content: '★'; font-size: 13px; opacity: 0.7; }
+  .star-cell::after { content: '★'; font-size: 12px; opacity: 0.7; }
 
-  /* Tokens (Gotiyan) */
+  /* Tokens */
   .token {
     width: 78%;
     height: 78%;
@@ -157,36 +160,50 @@
     from { transform: scale(0.95); }
     to { transform: scale(1.22); }
   }
-
-  /* Multiple tokens in one cell stack nicely */
   .cell .token { width: 65%; height: 65%; margin: -2px; }
 
-  /* Controls Panel */
-  .controls-bar {
-    width: min(94vw, 440px);
+  /* Corner Dice Docks */
+  .dice-dock {
+    position: absolute;
+    width: 46px;
+    height: 46px;
     background: #071912;
-    border: 1px solid #143d2c;
-    border-radius: 10px;
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .dice-box {
-    width: 48px;
-    height: 48px;
-    background: #fff;
-    color: #050e0a;
+    border: 2px solid #143d2c;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 26px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    transition: all 0.2s;
+    opacity: 0.3;
+    pointer-events: none;
   }
-  .dice-box.disabled { opacity: 0.5; cursor: not-allowed; }
+  .dice-dock.active {
+    opacity: 1;
+    pointer-events: auto;
+    border-color: #f5c542;
+    box-shadow: 0 0 12px #f5c542;
+    transform: scale(1.1);
+  }
+  /* Corner Positions */
+  #dice-red { top: -4px; left: -4px; }
+  #dice-green { top: -4px; right: -4px; }
+  #dice-yellow { bottom: -4px; right: -4px; }
+  #dice-blue { bottom: -4px; left: -4px; }
+
+  .status-bar {
+    text-align: center;
+    font-size: 13px;
+    color: #94a3b8;
+    background: #071912;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid #143d2c;
+    max-width: 400px;
+    width: 100%;
+  }
 </style>
 
 <div class="ludo-wrapper">
@@ -208,76 +225,59 @@
     </div>
 
     <!-- Game Play Area -->
-    <div id="game-area" style="display: none; flex-direction: column; align-items: center; gap: 10px;">
-      <div class="board-container" id="ludo-board">
-        <!-- 4 Yards -->
-        <div class="yard-red">
-          <div class="yard-inner">
-            <div class="yard-spot spot-red" id="yard-red-0"></div>
-            <div class="yard-spot spot-red" id="yard-red-1"></div>
-            <div class="yard-spot spot-red" id="yard-red-2"></div>
-            <div class="yard-spot spot-red" id="yard-red-3"></div>
-          </div>
-        </div>
-        <div class="yard-green">
-          <div class="yard-inner">
-            <div class="yard-spot spot-green" id="yard-green-0"></div>
-            <div class="yard-spot spot-green" id="yard-green-1"></div>
-            <div class="yard-spot spot-green" id="yard-green-2"></div>
-            <div class="yard-spot spot-green" id="yard-green-3"></div>
-          </div>
-        </div>
-        <div class="yard-blue">
-          <div class="yard-inner">
-            <div class="yard-spot spot-blue" id="yard-blue-0"></div>
-            <div class="yard-spot spot-blue" id="yard-blue-1"></div>
-            <div class="yard-spot spot-blue" id="yard-blue-2"></div>
-            <div class="yard-spot spot-blue" id="yard-blue-3"></div>
-          </div>
-        </div>
-        <div class="yard-yellow">
-          <div class="yard-inner">
-            <div class="yard-spot spot-yellow" id="yard-yellow-0"></div>
-            <div class="yard-spot spot-yellow" id="yard-yellow-1"></div>
-            <div class="yard-spot spot-yellow" id="yard-yellow-2"></div>
-            <div class="yard-spot spot-yellow" id="yard-yellow-3"></div>
-          </div>
-        </div>
+    <div id="game-area" style="display: none; flex-direction: column; align-items: center; gap: 12px;">
+      
+      <div class="board-outer">
+        <!-- Corner Dice Docks -->
+        <div id="dice-red" class="dice-dock" onclick="handleDiceRoll('red')">🎲</div>
+        <div id="dice-green" class="dice-dock" onclick="handleDiceRoll('green')">🎲</div>
+        <div id="dice-yellow" class="dice-dock" onclick="handleDiceRoll('yellow')">🎲</div>
+        <div id="dice-blue" class="dice-dock" onclick="handleDiceRoll('blue')">🎲</div>
 
-        <!-- Center Home -->
-        <div class="home-center">HOME</div>
+        <!-- Board -->
+        <div class="board-container" id="ludo-board">
+          <div class="yard-red"><div class="yard-inner">
+            <div class="yard-spot spot-red" id="yard-red-0"></div><div class="yard-spot spot-red" id="yard-red-1"></div>
+            <div class="yard-spot spot-red" id="yard-red-2"></div><div class="yard-spot spot-red" id="yard-red-3"></div>
+          </div></div>
+          <div class="yard-green"><div class="yard-inner">
+            <div class="yard-spot spot-green" id="yard-green-0"></div><div class="yard-spot spot-green" id="yard-green-1"></div>
+            <div class="yard-spot spot-green" id="yard-green-2"></div><div class="yard-spot spot-green" id="yard-green-3"></div>
+          </div></div>
+          <div class="yard-blue"><div class="yard-inner">
+            <div class="yard-spot spot-blue" id="yard-blue-0"></div><div class="yard-spot spot-blue" id="yard-blue-1"></div>
+            <div class="yard-spot spot-blue" id="yard-blue-2"></div><div class="yard-spot spot-blue" id="yard-blue-3"></div>
+          </div></div>
+          <div class="yard-yellow"><div class="yard-inner">
+            <div class="yard-spot spot-yellow" id="yard-yellow-0"></div><div class="yard-spot spot-yellow" id="yard-yellow-1"></div>
+            <div class="yard-spot spot-yellow" id="yard-yellow-2"></div><div class="yard-spot spot-yellow" id="yard-yellow-3"></div>
+          </div></div>
+
+          <div class="home-center">HOME</div>
+        </div>
       </div>
 
-      <!-- Dice & Turn Controls -->
-      <div class="controls-bar">
-        <div>
-          <div id="turn-label" style="font-weight: bold; font-size: 16px; color: #f5c542;">Red's Turn</div>
-          <div id="status-msg" style="font-size: 12px; color: #94a3b8;">Dice par click karke roll karo</div>
-        </div>
-        <div id="dice-btn" class="dice-box" onclick="handleDiceRoll()">🎲</div>
-      </div>
+      <div class="status-bar" id="status-msg">Apne corner wale dice par click karke roll karo</div>
     </div>
   </div>
 </div>
 
 <script>
-// 52-step Outer Track Coordinates [row, col] (1-indexed for CSS grid)
 const MAIN_PATH = [
-  [7,2],[7,3],[7,4],[7,5],[7,6],           // 0-4 (Red start at 0)
-  [6,7],[5,7],[4,7],[3,7],[2,7],[1,7],     // 5-10
-  [1,8],                                   // 11
-  [1,9],[2,9],[3,9],[4,9],[5,9],[6,9],     // 12-17 (Green start at 13)
-  [7,10],[7,11],[7,12],[7,13],[7,14],[7,15],// 18-23
-  [8,15],                                  // 24
-  [9,15],[9,14],[9,13],[9,12],[9,11],[9,10],// 25-30 (Yellow start at 26)
-  [10,9],[11,9],[12,9],[13,9],[14,9],[15,9],// 31-36
-  [15,8],                                  // 37
-  [15,7],[14,7],[13,7],[12,7],[11,7],[10,7],// 38-43 (Blue start at 39)
-  [9,6],[9,5],[9,4],[9,3],[9,2],[9,1],     // 44-49
-  [8,1],[7,1]                              // 50-51
+  [7,2],[7,3],[7,4],[7,5],[7,6],
+  [6,7],[5,7],[4,7],[3,7],[2,7],[1,7],
+  [1,8],
+  [1,9],[2,9],[3,9],[4,9],[5,9],[6,9],
+  [7,10],[7,11],[7,12],[7,13],[7,14],[7,15],
+  [8,15],
+  [9,15],[9,14],[9,13],[9,12],[9,11],[9,10],
+  [10,9],[11,9],[12,9],[13,9],[14,9],[15,9],
+  [15,8],
+  [15,7],[14,7],[13,7],[12,7],[11,7],[10,7],
+  [9,6],[9,5],[9,4],[9,3],[9,2],[9,1],
+  [8,1],[7,1]
 ];
 
-// Home Stretch Coordinates (5 steps + final 57 = HOME)
 const HOME_PATHS = {
   red:    [[8,2],[8,3],[8,4],[8,5],[8,6]],
   green:  [[2,8],[3,8],[4,8],[5,8],[6,8]],
@@ -286,8 +286,7 @@ const HOME_PATHS = {
 };
 
 const START_INDEX = { red: 0, green: 13, yellow: 26, blue: 39 };
-const SAFE_INDICES = [0, 8, 13, 21, 26, 34, 39, 47]; // Start squares + Star squares
-const COLORS = ['red', 'green', 'yellow', 'blue'];
+const SAFE_INDICES = [0, 8, 13, 21, 26, 34, 39, 47];
 const COLOR_HEX = { red: '#f87171', green: '#4ade80', yellow: '#fde047', blue: '#60a5fa' };
 const DICE_FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
 
@@ -297,7 +296,6 @@ let turnIdx = 0;
 let diceValue = null;
 let waitingForMove = false;
 
-// Token state: -1 = in yard, 0..50 = steps moved, 51..55 = home stretch, 56 = finished
 let tokens = {
   red: [-1, -1, -1, -1],
   green: [-1, -1, -1, -1],
@@ -307,7 +305,6 @@ let tokens = {
 
 function buildTrackCells() {
   const board = document.getElementById('ludo-board');
-  // Create all 72 track cells
   const addCell = (r, c, extraClass = '') => {
     const div = document.createElement('div');
     div.className = `cell ${extraClass}`;
@@ -354,28 +351,22 @@ function getGlobalIndex(color, step) {
 }
 
 function getCoords(color, step) {
-  if (step >= 0 && step <= 50) {
-    return MAIN_PATH[getGlobalIndex(color, step)];
-  }
-  if (step >= 51 && step <= 55) {
-    return HOME_PATHS[color][step - 51];
-  }
+  if (step >= 0 && step <= 50) return MAIN_PATH[getGlobalIndex(color, step)];
+  if (step >= 51 && step <= 55) return HOME_PATHS[color][step - 51];
   return null;
 }
 
 function renderBoard() {
-  // Clear old tokens
   document.querySelectorAll('.token').forEach(el => el.remove());
 
   activeColors.forEach(color => {
     tokens[color].forEach((step, tIdx) => {
-      if (step === 56) return; // Already finished
+      if (step === 56) return;
 
       const tok = document.createElement('div');
       tok.className = `token ${color}`;
       tok.onclick = () => onTokenClick(color, tIdx);
 
-      // Highlight movable tokens for current player
       if (waitingForMove && color === activeColors[turnIdx] && canMove(color, tIdx, diceValue)) {
         tok.classList.add('movable');
       }
@@ -399,30 +390,40 @@ function canMove(color, tIdx, roll) {
 }
 
 function updateTurnUI(customMsg = null) {
-  const color = activeColors[turnIdx];
-  const label = document.getElementById('turn-label');
+  const activeColor = activeColors[turnIdx];
+  
+  // Highlight only current player's corner dice
+  ['red', 'green', 'yellow', 'blue'].forEach(c => {
+    const dock = document.getElementById(`dice-${c}`);
+    if (c === activeColor) {
+      dock.classList.add('active');
+      dock.innerText = '🎲';
+    } else {
+      dock.classList.remove('active');
+      dock.innerText = '🔒';
+    }
+  });
+
   let teamText = '';
   if (gameMode === '2v2') {
-    teamText = (color === 'red' || color === 'yellow') ? ' (Team A)' : ' (Team B)';
+    teamText = (activeColor === 'red' || activeColor === 'yellow') ? ' (Team A)' : ' (Team B)';
   }
-  label.innerText = `${color.toUpperCase()}'s Turn${teamText}`;
-  label.style.color = COLOR_HEX[color];
-  document.getElementById('status-msg').innerText = customMsg || 'Dice par click karke roll karo';
-  document.getElementById('dice-btn').classList.remove('disabled');
+  document.getElementById('status-msg').innerHTML = `<b style="color:${COLOR_HEX[activeColor]}">${activeColor.toUpperCase()}'s Turn${teamText}</b> — ${customMsg || 'Apne corner wale dice par click karo'}`;
 }
 
-function handleDiceRoll() {
-  if (waitingForMove) return;
-  const color = activeColors[turnIdx];
+function handleDiceRoll(color) {
+  if (waitingForMove || color !== activeColors[turnIdx]) return;
+  
   diceValue = Math.floor(Math.random() * 6) + 1;
-  document.getElementById('dice-btn').innerText = DICE_FACES[diceValue - 1];
-  document.getElementById('dice-btn').classList.add('disabled');
+  const dock = document.getElementById(`dice-${color}`);
+  dock.innerText = DICE_FACES[diceValue - 1];
+  dock.classList.remove('active');
 
   const movableTokens = [0, 1, 2, 3].filter(i => canMove(color, i, diceValue));
 
   if (movableTokens.length === 0) {
-    document.getElementById('status-msg').innerText = `${diceValue} aaya — koi chal nahi sakti!`;
-    setTimeout(() => nextTurn(), 1000);
+    document.getElementById('status-msg').innerText = `${diceValue} aaya — koi chal nahi sakti! Next turn...`;
+    setTimeout(() => nextTurn(), 1100);
     return;
   }
 
@@ -430,7 +431,6 @@ function handleDiceRoll() {
   document.getElementById('status-msg').innerText = `${diceValue} aaya! Chamakti hui goti par click karo`;
   renderBoard();
 
-  // Auto-move if only 1 valid option exists
   if (movableTokens.length === 1) {
     setTimeout(() => {
       if (waitingForMove) onTokenClick(color, movableTokens[0]);
@@ -454,20 +454,17 @@ function onTokenClick(color, tIdx) {
   let extraTurn = (diceValue === 6);
 
   if (step === -1) {
-    tokens[color][tIdx] = 0; // Bring out of yard
+    tokens[color][tIdx] = 0;
   } else {
     tokens[color][tIdx] += diceValue;
   }
 
   const newStep = tokens[color][tIdx];
 
-  // Check if reached Home (56)
   if (newStep === 56) {
     extraTurn = true;
-    document.getElementById('status-msg').innerText = 'Goti ghar pahunch gayi! Bonus turn!';
   }
 
-  // Check Capture on outer track (0..50)
   if (newStep >= 0 && newStep <= 50) {
     const gIdx = getGlobalIndex(color, newStep);
     if (!SAFE_INDICES.includes(gIdx)) {
@@ -475,9 +472,8 @@ function onTokenClick(color, tIdx) {
         if (!isTeammate(color, oppColor)) {
           tokens[oppColor].forEach((oppStep, oppIdx) => {
             if (oppStep >= 0 && oppStep <= 50 && getGlobalIndex(oppColor, oppStep) === gIdx) {
-              tokens[oppColor][oppIdx] = -1; // Send opponent back to yard
+              tokens[oppColor][oppIdx] = -1;
               extraTurn = true;
-              document.getElementById('status-msg').innerText = `💥 ${oppColor.toUpperCase()} ki goti kaat di! Extra turn!`;
             }
           });
         }
@@ -487,11 +483,10 @@ function onTokenClick(color, tIdx) {
 
   renderBoard();
 
-  // Check Win Condition
   if (checkWinner(color)) return;
 
   if (extraTurn) {
-    updateTurnUI('Bonus turn! Phir se dice roll karo');
+    updateTurnUI('Bonus turn! Apne dice par phir click karo');
   } else {
     nextTurn();
   }

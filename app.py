@@ -198,6 +198,4 @@ if __name__ == '__main__':
 def notifications():
     return render_template('notification.html')
 
-@app.route('/play/ludo')
-def play_ludo():
-    return render_template('games/ludo.html')
+

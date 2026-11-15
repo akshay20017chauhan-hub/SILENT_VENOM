@@ -9,33 +9,59 @@
         <a href="{{ url_for('dashboard') }}" style="color: #f5c542; font-size: 16px; text-decoration: none; font-weight: bold;">
             ← Back
         </a>
-        <span style="color: #f5c542; font-size: 16px; font-weight: bold;">LUDO KING</span>
+        <span style="color: #f5c542; font-size: 16px; font-weight: bold;">LUDO MULTIPLAYER ARENA</span>
         <span style="width: 48px;"></span>
     </div>
 
-    <!-- Interactive Native Ludo Board Container -->
-    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0b1f17; color: #fff; padding: 20px;">
-        <div style="background: #071912; border: 2px solid #143d2c; border-radius: 12px; padding: 24px; text-align: center; max-width: 320px; width: 100%; box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
-            <h2 style="color: #f5c542; margin-bottom: 8px;">🎲 Ludo Arena</h2>
-            <p id="turn-info" style="color: #8fa89d; font-size: 14px; margin-bottom: 20px;">Roll the dice to start your turn!</p>
-            
-            <div id="dice-display" style="font-size: 48px; margin-bottom: 20px; background: #0b1f17; border-radius: 8px; padding: 10px; border: 1px solid #143d2c;">
-                🎲
-            </div>
-
-            <button onclick="rollDice()" style="background: #f5c542; color: #050e0a; border: none; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%;">
-                Roll Dice
-            </button>
+    <!-- Mode Selection & Real Game Board Container -->
+    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0b1f17; color: #fff; padding: 10px;">
+        
+        <div id="mode-selector" style="background: #071912; border: 2px solid #143d2c; border-radius: 12px; padding: 20px; text-align: center; max-width: 360px; width: 100%;">
+            <h3 style="color: #f5c542; margin-bottom: 15px;">Select Game Mode</h3>
+            <button onclick="initGame(2)" style="background: #10b981; color: #fff; border: none; padding: 10px 20px; margin: 5px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 80%;">1 vs 1 Mode</button><br>
+            <button onclick="initGame(4)" style="background: #3b82f6; color: #fff; border: none; padding: 10px 20px; margin: 5px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 80%;">4 Players / 2v2</button>
         </div>
+
+        <div id="ludo-board-area" style="display: none; text-align: center; width: 100%; height: 100%; flex-direction: column; justify-content: center; align-items: center;">
+            <div style="background: #071912; padding: 15px; border-radius: 10px; border: 1px solid #143d2c; margin-bottom: 10px;">
+                <h4 id="current-player-turn" style="color: #f5c542; margin: 0 0 5px 0;">Red Player's Turn</h4>
+                <div id="dice-val" style="font-size: 32px; margin-bottom: 5px;">🎲 -</div>
+                <button onclick="rollRealDice()" style="background: #f5c542; color: #050e0a; border: none; padding: 8px 16px; font-weight: bold; border-radius: 6px; cursor: pointer;">Roll Dice</button>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 100px); grid-gap: 5px; background: #143d2c; padding: 10px; border-radius: 8px;">
+                <div style="background: #ef4444; padding: 20px; border-radius: 6px; text-align: center; font-weight: bold;">Red<br><span id="p0-pos">Home</span></div>
+                <div style="background: #10b981; padding: 20px; border-radius: 6px; text-align: center; font-weight: bold;">Green<br><span id="p1-pos">Home</span></div>
+                <div style="background: #f5c542; color: #000; padding: 20px; border-radius: 6px; text-align: center; font-weight: bold;">Yellow<br><span id="p2-pos">Home</span></div>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <script>
-function rollDice() {
-    const diceValues = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
-    const randomRoll = Math.floor(Math.random() * 6);
-    document.getElementById('dice-display').innerText = diceValues[randomRoll];
-    document.getElementById('turn-info').innerText = `You rolled a ${randomRoll + 1}! Move your token.`;
+let totalPlayers = 2;
+let currentPlayer = 0;
+let playerPositions = [0, 0, 0, 0];
+const playerNames = ["Red", "Green", "Yellow", "Blue"];
+
+function initGame(modes) {
+    totalPlayers = modes;
+    document.getElementById('mode-selector').style.display = 'none';
+    document.getElementById('ludo-board-area').style.display = 'flex';
+}
+
+function rollRealDice() {
+    let roll = Math.floor(Math.random() * 6) + 1;
+    document.getElementById('dice-val').innerText = `🎲 ${roll}`;
+    
+    playerPositions[currentPlayer] += roll;
+    if(playerPositions[currentPlayer] > 50) playerPositions[currentPlayer] = 50;
+    
+    document.getElementById(`p${currentPlayer}-pos`).innerText = `Pos: ${playerPositions[currentPlayer]}`;
+    
+    currentPlayer = (currentPlayer + 1) % totalPlayers;
+    document.getElementById('current-player-turn').innerText = `${playerNames[currentPlayer]}'s Turn`;
 }
 </script>
 {% endblock %}

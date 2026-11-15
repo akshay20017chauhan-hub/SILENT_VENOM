@@ -20,3 +20,11 @@ function scrollToSection(sectionId) {
     document.querySelectorAll('.cat-pill').forEach(btn => btn.classList.remove('active'));
     event.currentTarget.classList.add('active');
 }
+function openGame(gameName) {
+    if (gameName === 'ludo') {
+        window.location.href = '/play/ludo';
+    } else {
+        alert(gameName.toUpperCase() + ' game coming soon!');
+    }
+}
+

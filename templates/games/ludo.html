@@ -14,8 +14,8 @@
     </div>
 
     <!-- Embedded Local Mini Game Container -->
-    <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #0b1f17; position: relative;">
-        <div style="text-align: center; color: #fff; padding: 20px;">
+    <div id="game-container" style="flex: 1; display: flex; align-items: center; justify-content: center; background: #0b1f17; position: relative;">
+        <div id="welcome-screen" style="text-align: center; color: #fff; padding: 20px;">
             <h2 style="color: #f5c542; margin-bottom: 10px;">🎲 Ludo Arena</h2>
             <p style="color: #8fa89d; font-size: 14px; margin-bottom: 20px;">Click below to launch the interactive board!</p>
             <button onclick="startLudoGame()" style="background: #f5c542; color: #050e0a; border: none; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer;">
@@ -27,7 +27,12 @@
 
 <script>
 function startLudoGame() {
-    alert("Ludo engine starting! Enjoy your game inside SILENT VENOM.");
+    const container = document.getElementById('game-container');
+    container.innerHTML = `
+        <iframe src="https://html5.gamedistribution.com/rvvASMiM/12a813b190f745e691238385fa81a8c3/" 
+                style="width: 100%; height: 100%; border: none;" 
+                allowfullscreen></iframe>
+    `;
 }
 </script>
 {% endblock %}
